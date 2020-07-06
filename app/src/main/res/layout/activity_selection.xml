@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".SelectionActivity"
+    android:padding="16dp">
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+
+        android:layout_gravity="center"
+        android:paddingTop="60dp"
+        android:paddingBottom="60dp"
+        android:textSize="26sp"
+        android:text="출석용"
+        android:onClick="clickAttandenceBtn"/>
+
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+
+        android:layout_gravity="center"
+        android:paddingTop="60dp"
+        android:paddingBottom="60dp"
+        android:textSize="26sp"
+        android:text="관리용"
+        android:onClick="clickAdminBtn"/>
+
+
+
+</LinearLayout>
