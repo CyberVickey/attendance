@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AttendanceApp3</string>
+    <string name="kakao_app_key">c90bdc6462a6c9398b414fe7bda2983c</string>
 </resources>

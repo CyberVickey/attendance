@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".LoginActivity">
 
     <ImageView
@@ -24,7 +25,15 @@
         android:layout_gravity="center"
         />
 
+    <com.kakao.usermgmt.LoginButton
+        android:layout_marginTop="50dp"
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+
     <Button
+        android:layout_marginTop="100dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="로그인"
