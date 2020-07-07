@@ -15,7 +15,7 @@ import java.util.List;
 
 public class NumberInputActivity extends AppCompatActivity {
 
-    TextView tv_num1, tv_num2, tv_num3, tv_num4;
+    TextView tv_stuNum;
     final Button[] btns = new Button[10];
     //Button 참조변수 10개 배열객체
 
@@ -25,12 +25,16 @@ public class NumberInputActivity extends AppCompatActivity {
     TextView[] tvs= new TextView[4];
     int cnt=0;
 
+    //학생 번호를 저장
+    String stuNum;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_input);
 
         tableLayout = findViewById(R.id.tableLayout);
+        tv_stuNum = findViewById(R.id.tv_stunum);
 
 
 //        tv_num1 = findViewById(R.id.tv_num1);
@@ -70,6 +74,7 @@ public class NumberInputActivity extends AppCompatActivity {
         String s =bt.getText().toString();
         int num = Integer.parseInt(s);
 
+        if(cnt>=4) cnt=0;
         if(cnt ==0 ){
             tvs[1].setText("");
             tvs[2].setText("");
@@ -78,7 +83,7 @@ public class NumberInputActivity extends AppCompatActivity {
 
         tvs[cnt].setText(num+"");
         cnt++;
-        if(cnt>=4) cnt=0;
+
 
     }//clickBtn end.
 
@@ -88,11 +93,21 @@ public class NumberInputActivity extends AppCompatActivity {
         if(cnt!=0){
             cnt --;
         }
+
         tvs[cnt].setText("");
 
     }
 
     public void clickOK(View view) {
+        //입력받은 번호를 받아와서 확인
+        StringBuffer buffer = new StringBuffer();
+        buffer.append(tvs[0].getText().toString());
+        buffer.append(tvs[1].getText().toString());
+        buffer.append(tvs[2].getText().toString());
+        buffer.append(tvs[3].getText().toString());
+
+//        tv_stuNum.setText(buffer); 동작 테스트 확인
+
     }
 
 
