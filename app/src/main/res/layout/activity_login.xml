@@ -24,5 +24,12 @@
         android:layout_gravity="center"
         />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="로그인"
+        android:onClick="clickLogin"
+        />
+
 
 </LinearLayout>

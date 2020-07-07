@@ -15,10 +15,13 @@ public class SelectionActivity extends AppCompatActivity {
     }
 
     public void clickAttandenceBtn(View view) {
-        Intent intent = new Intent(this, SelectionActivity.class);
+        Intent intent = new Intent(this, NumberInputActivity.class);
+        startActivity(intent);
         //번호를 받아서 서버와 학생정보 확인 후 , 문자 전송
     }
 
     public void clickAdminBtn(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
