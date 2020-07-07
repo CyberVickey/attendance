@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menu_calendar"
+        android:title="Calendar"
+        android:icon="@android:drawable/ic_menu_save"/>
+
+    <item android:id="@+id/menu_attendance"
+        android:title="Attendance"
+        android:icon="@android:drawable/ic_menu_save"/>
+
+    <item android:id="@+id/menu_message"
+        android:title="Message"
+        android:icon="@android:drawable/ic_menu_save"/>
+
+    <item android:id="@+id/menu_student"
+        android:title="Student"
+        android:icon="@android:drawable/ic_menu_save"/>
+
+    <item android:id="@+id/menu_setting"
+        android:title="Setting"
+        android:icon="@android:drawable/ic_menu_save"/>
+
+
+</menu>

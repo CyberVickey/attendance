@@ -15,6 +15,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void clickLogin(View view) {
+        //로그인 구현해서 Selection Activity로 넘기기
         Intent intent = new Intent(this, SelectionActivity.class);
         startActivity(intent);
     }
