@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="8dp"
     android:padding="16dp"
+    android:background="@color/myColorLight"
     app:cardCornerRadius="8dp"
     app:cardElevation="6dp">
 
@@ -18,7 +19,8 @@
             android:layout_height="wrap_content"
             android:text="김학생"
             android:textSize="28sp"
-            android:padding="6dp"
+            android:padding="8dp"
+            android:layout_marginTop="2dp"
             />
 
         <TextView

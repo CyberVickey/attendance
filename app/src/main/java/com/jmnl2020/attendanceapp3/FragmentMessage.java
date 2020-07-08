@@ -1,5 +1,6 @@
 package com.jmnl2020.attendanceapp3;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class FragmentMessage extends Fragment {
+
+    Context context;
+
+    public FragmentMessage(Context context) {
+        this.context = context;
+    }
 
     @Nullable
     @Override
