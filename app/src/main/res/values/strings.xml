@@ -5,6 +5,6 @@
     <string name="fragment1">캘린더</string>
     <string name="fragment2">출석부</string>
     <string name="fragment3">단체 문자</string>
-    <string name="fragment4">학생</string>
+    <string name="fragment4">학생 관리</string>
     <string name="fragment5">설정</string>
 </resources>

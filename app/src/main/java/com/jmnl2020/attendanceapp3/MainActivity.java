@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         //각 탭 화면의 프래그먼트 생성
         fragments[0] = new FragmentCalendar();
-        fragments[1] = new FragmentAttendance();
+        fragments[1] = new FragmentAttendance(this);
         fragments[2] = new FragmentMessage();
         fragments[3] = new FragmentStudent();
         fragments[4] = new FragmentSetting();
