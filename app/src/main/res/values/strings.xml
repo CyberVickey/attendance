@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">AttendanceApp3</string>
     <string name="kakao_app_key">c90bdc6462a6c9398b414fe7bda2983c</string>
+    <string name="student_number_input">출석체크</string>
+    <string name="fragment1">캘린더</string>
+    <string name="fragment2">출석부</string>
+    <string name="fragment3">단체 문자</string>
+    <string name="fragment4">학생</string>
+    <string name="fragment5">설정</string>
 </resources>

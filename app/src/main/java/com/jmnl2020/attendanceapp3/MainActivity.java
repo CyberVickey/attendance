@@ -1,6 +1,7 @@
 package com.jmnl2020.attendanceapp3;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -22,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //앱바 숨기기
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         //프래그먼트의 동적 관리를 위한 관리자 객체
         fragmentManager = getSupportFragmentManager();

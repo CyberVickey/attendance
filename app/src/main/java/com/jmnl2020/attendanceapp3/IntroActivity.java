@@ -1,6 +1,7 @@
 package com.jmnl2020.attendanceapp3;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,8 +18,12 @@ public class IntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
-        //3초 후에 MainActivity 자동실행하기
-        han.sendEmptyMessageDelayed(0,3000);
+        //2초 후에 MainActivity 자동실행하기
+        han.sendEmptyMessageDelayed(0,2000);
+
+        //앱 바 숨기기
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
     }
 

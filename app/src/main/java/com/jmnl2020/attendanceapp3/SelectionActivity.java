@@ -1,5 +1,6 @@
 package com.jmnl2020.attendanceapp3;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,6 +13,11 @@ public class SelectionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selection);
+
+        //앱바 숨기기
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
     }
 
     public void clickAttandenceBtn(View view) {

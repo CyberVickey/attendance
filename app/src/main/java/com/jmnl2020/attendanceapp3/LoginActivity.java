@@ -1,5 +1,6 @@
 package com.jmnl2020.attendanceapp3;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -31,12 +32,17 @@ import static com.kakao.util.helper.Utility.getPackageInfo;
 
 public class LoginActivity extends AppCompatActivity {
 
-    boolean isLogin = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        //로그인에 성공한 적이 있으면
+        afterLoginSendNext();
+
+        //앱바 숨기기
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         //키해시값 얻어와서 Logcat 창에 출력
         String keyHash = getKeyHash(this);
@@ -77,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onSuccess(MeV2Response result) {
 
                 //로그인에 성공!!
-                isLogin = true;
+                G.isLogin = true;
 
                 //사용자 정보객체 받아옴.
                 UserAccount userAccount = result.getKakaoAccount();
@@ -93,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                 //받아온 정보를 MainActivity - Setting fragment 로 전달.
                 // -> G 클래스를 이용해서 모든 Activity 에서 정보 사용할 수 있도록 쉐어
                 // 로그인에 성공하면 다른 액티비티로 넘어갈 수 있도록 도와주는 메소드 호출
-                afterLoginSendMain();
+                afterLoginSendNext();
 
             }
         });
@@ -119,20 +125,19 @@ public class LoginActivity extends AppCompatActivity {
 
     //다음 페이지를 둘러볼 수 있는 로그인 버튼
     public void clickLogin(View view) {
-        //로그인 구현해서 Selection Activity로 넘기기
-        Intent intent = new Intent(this, SelectionActivity.class);
-        startActivity(intent);
+        G.isLogin = true;
+        afterLoginSendNext();
     }//clickLogin end.
 
 
 
     //로그인 성공시 MainActivity로 넘겨주는 메소드
-    public void afterLoginSendMain(){
+    public void afterLoginSendNext(){
 
-        if (isLogin == true){
-            Intent intent = new Intent(this, MainActivity.class);
+        if (G.isLogin == true){
+            Intent intent = new Intent(this, SelectionActivity.class);
             startActivity(intent);
-        }
+        }else return;
     }
 
 }
