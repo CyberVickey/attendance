@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //프레그먼트 작업 트랜잭션 시작
                 FragmentTransaction tran = fragmentManager.beginTransaction();
+                tran.addToBackStack(null); // fragment를 백 스택에 저장
 
                 switch ( menuItem.getItemId() ){
                     case R.id.menu_calendar:
