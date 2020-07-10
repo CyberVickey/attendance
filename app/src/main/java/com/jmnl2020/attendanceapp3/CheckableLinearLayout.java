@@ -14,16 +14,9 @@ public class CheckableLinearLayout extends LinearLayout implements Checkable {
     // private boolean mIschecked;
 
     //constructors
-    public CheckableLinearLayout(Context context) {
-        super(context);
-    }
 
     public CheckableLinearLayout(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-    }
-
-    public CheckableLinearLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
     }
 
 
