@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +23,10 @@ public class FragmentMessage extends Fragment {
     ListView listView;
     ArrayList<ItemMessageFragment> listItem = new ArrayList<>();
     AdapterMessageFragment adapter = new AdapterMessageFragment();;
+
+    //전체선택 가능하게 만들어주자
+    boolean checkbox = false;
+
 
     public FragmentMessage(Context context) {
         this.context = context;
@@ -46,4 +52,14 @@ public class FragmentMessage extends Fragment {
 
         return view;
     }
+
+    public void clickSendMsg(View v){
+        Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
+    }
+
+
+
 }
+
+
+

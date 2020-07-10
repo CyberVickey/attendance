@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <TextView
+        android:id="@+id/tv_appbar"
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
         android:text="@string/fragment5"
@@ -13,11 +15,141 @@
         android:background="@color/myColorDark"
         android:layout_alignParentTop="true"/>
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/cv"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/piano"
+        android:layout_below="@+id/tv_appbar"
+        android:layout_margin="20dp"
+        />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Setting"
-        android:textSize="50sp"/>
+        android:text="김선생"
+        android:layout_toRightOf="@+id/cv"
+        android:layout_below="@id/tv_appbar"
+        android:layout_marginTop="40dp"
+        android:textSize="20sp"
+        android:layout_marginLeft="16dp"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:layout_below="@+id/tv_appbar"
+        android:layout_marginTop="180dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/linearlayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="240dp"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="70dp"
+            android:text="안내 메세지 수정"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:paddingLeft="30dp"
+            />
+
+        <ImageView
+            android:layout_width="42dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_keyboard_arrow_right_42dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:layout_below="@+id/linearlayout1"/>
+
+<!--    -->
+
+    <LinearLayout
+    android:id="@+id/linearlayout2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_below="@+id/linearlayout1"
+    >
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="70dp"
+        android:text="휴/퇴원생 목록"
+        android:textSize="20sp"
+        android:gravity="center_vertical"
+        android:paddingLeft="30dp"
+        />
+
+    <ImageView
+        android:layout_width="42dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/ic_keyboard_arrow_right_42dp" />
+
+</LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:layout_below="@+id/linearlayout2"/>
+
+    <LinearLayout
+        android:id="@+id/linearlayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/linearlayout2"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="70dp"
+            android:text="출석용 화면 전환"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:paddingLeft="30dp"
+            />
+
+        <ImageView
+            android:layout_width="42dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_keyboard_arrow_right_42dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:layout_below="@+id/linearlayout3"/>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그아웃"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="18dp"
+        android:onClick="clicLogout"
+        />
 
 </RelativeLayout>
