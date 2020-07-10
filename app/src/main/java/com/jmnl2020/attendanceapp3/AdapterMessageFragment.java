@@ -51,4 +51,15 @@ public class AdapterMessageFragment extends BaseAdapter {
 
         return convertView;
     }
+
+     //아이템 데이터 추가를 위한 함수
+    public void addItem(String name){
+        ItemMessageFragment listItem = new ItemMessageFragment();
+
+        listItem.setName(name);
+
+        items.add(listItem);
+
+    }
+
 }

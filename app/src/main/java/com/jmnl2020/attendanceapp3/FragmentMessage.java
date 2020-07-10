@@ -9,6 +9,7 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
@@ -29,7 +30,9 @@ public class FragmentMessage extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        listItem.add(new ItemMessageFragment("김학생"));
+        adapter.addItem("김학생");
+        adapter.addItem("이학생");
+        adapter.addItem("박학생");
 
     }
 
