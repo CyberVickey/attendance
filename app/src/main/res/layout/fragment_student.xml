@@ -26,5 +26,17 @@
 
 <!--  divider 구분선 넣는 방법 찾아내기!!!!!!!!!!!  -->
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_std"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:src="@drawable/ic_add_white_42dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        android:elevation="8dp"
+        android:theme="@style/customTheme"
+        />
 
 </RelativeLayout>

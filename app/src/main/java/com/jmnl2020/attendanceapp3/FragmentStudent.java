@@ -1,6 +1,8 @@
 package com.jmnl2020.attendanceapp3;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +18,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 
 public class FragmentStudent extends Fragment {
@@ -27,10 +31,9 @@ public class FragmentStudent extends Fragment {
     RecyclerView recyclerView;
     AdapterStudentFragment adapter;
 
+    //fab
+    FloatingActionButton fab;
 
-
-//    DividerItemDecoration divider = new DividerItemDecoration(recyclerView.getContext(),
-//            mLayoutManager.getOrientation());
 
     public FragmentStudent(Context context) {
         this.context = context;
@@ -40,9 +43,6 @@ public class FragmentStudent extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //recycler view divider 어케 만듬 ㅠ
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-//        recyclerView.addItemDecoration(new DividerItemDecoration(context, 1));
 
         //학생 아이템 데이터 추가
         items.add(new ItemStudentList("이학생"));
@@ -50,10 +50,6 @@ public class FragmentStudent extends Fragment {
         items.add(new ItemStudentList("재학생"));
 
         Toast.makeText(context, "oncreate", Toast.LENGTH_SHORT).show();
-
-        //divider
-
-
 
 
     }
@@ -67,15 +63,15 @@ public class FragmentStudent extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerview_frg4);
         recyclerView.setAdapter(adapter);
 
-//        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
-//                DividerItemDecoration.HORIZONTAL);
-//        recyclerView.addItemDecoration(dividerItemDecoration);
-
-//                DividerItemDecoration horizontalDivider =
-//                new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.HORIZONTAL);
-//        Drawable line = ContextCompat.getDrawable(getActivity(), R.drawable.line_divider);
-//        horizontalDivider.setDrawable(line);
-//        recyclerView.addItemDecoration(horizontalDivider);
+        fab = view.findViewById(R.id.fab_std);
+        fab.bringToFront();
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), StudentInfoActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }

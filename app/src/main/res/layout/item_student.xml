@@ -6,12 +6,16 @@
     android:orientation="vertical"
     >
 
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#BDBDBD"
+        android:layout_below="@id/linlayout"/>
 
     <LinearLayout
         android:id="@+id/linlayout"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="79dp"
         android:orientation="vertical">
 
         <TextView
@@ -24,12 +28,6 @@
             android:textSize="20sp"
             android:layout_marginHorizontal="20dp"
             android:gravity="center_vertical"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/cardview_shadow_start_color"
             />
 
     </LinearLayout>

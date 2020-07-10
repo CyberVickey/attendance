@@ -2,6 +2,7 @@ package com.jmnl2020.attendanceapp3;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -27,6 +30,9 @@ public class FragmentMessage extends Fragment {
     //전체선택 가능하게 만들어주자
     boolean checkbox = false;
 
+    //click msg fab
+    FloatingActionButton fab;
+
 
     public FragmentMessage(Context context) {
         this.context = context;
@@ -40,6 +46,7 @@ public class FragmentMessage extends Fragment {
         adapter.addItem("이학생");
         adapter.addItem("박학생");
 
+
     }
 
     @Nullable
@@ -50,11 +57,19 @@ public class FragmentMessage extends Fragment {
         listView = view.findViewById(R.id.listview_msgfg);
         listView.setAdapter(adapter);
 
-        return view;
-    }
+        //fab
+        fab = view.findViewById(R.id.fab_msg);
+        fab.bringToFront();;
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("tag", "click fab");
+                Toast.makeText(context, "click fab", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-    public void clickSendMsg(View v){
-        Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
+
+        return view;
     }
 
 
