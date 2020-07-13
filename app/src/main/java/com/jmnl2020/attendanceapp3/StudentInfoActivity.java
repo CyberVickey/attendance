@@ -10,7 +10,7 @@ public class StudentInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_info);
+        setContentView(R.layout.student_info);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();

@@ -9,4 +9,8 @@ public class G {
     public static String nickName; // 프로필 이름
     public static String profileUrl; //프로필 이미지의 uri
 
+    //메세지 보낼 문구
+    public static String sendMsg = "안녕하세요.";
+
+
 }

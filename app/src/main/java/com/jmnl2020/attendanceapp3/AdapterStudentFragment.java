@@ -1,6 +1,7 @@
 package com.jmnl2020.attendanceapp3;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,14 @@ class ViewHolder extends RecyclerView.ViewHolder{
         super(itemView);
 
         tv= itemView.findViewById(R.id.tv_stdListName);
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                //student info xml 이용해서 alertdialog 만들기
+            }
+        });
 
     }
 }
