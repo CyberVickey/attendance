@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:id="@+id/scrollView"
     >
 
-    <TextView
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        >
+
+        <TextView
         android:id="@+id/resister_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,7 +21,7 @@
 
         />
 
-    <TextView
+        <TextView
         android:id="@+id/tv_nameInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,7 +32,7 @@
         android:layout_marginTop="22dp"/>
 
 
-    <ToggleButton
+        <ToggleButton
         android:id="@+id/tb_mon"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -42,7 +48,7 @@
         android:layout_marginLeft="20dp"
         />
 
-    <ToggleButton
+        <ToggleButton
         android:id="@+id/tb_tue"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -60,7 +66,7 @@
         android:onClick="clickDay"
         />
 
-    <ToggleButton
+        <ToggleButton
         android:id="@+id/tb_wed"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -78,7 +84,7 @@
         android:onClick="clickDay"
         />
 
-    <ToggleButton
+        <ToggleButton
         android:id="@+id/tb_thu"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -96,7 +102,7 @@
         android:onClick="clickDay"
         />
 
-    <ToggleButton
+        <ToggleButton
         android:id="@+id/tb_fri"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -114,7 +120,7 @@
         android:onClick="clickDay"
         />
 
-    <ToggleButton
+        <ToggleButton
         android:id="@+id/tb_sat"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -133,23 +139,16 @@
         android:onClick="clickDay"
         />
 
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tb_sat"
-
-        >
-
-      <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tb_fri"
-        android:layout_marginTop="40dp"
-        android:orientation="horizontal"
-        android:background="@drawable/bg_editbox"
-        android:layout_marginHorizontal="10dp"
-        android:padding="16dp"
+        <LinearLayout
+            android:id="@+id/linlayoutEt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tb_fri"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_editbox"
+            android:layout_marginHorizontal="10dp"
+            android:padding="16dp"
         >
 
         <LinearLayout
@@ -327,6 +326,17 @@
 
     </LinearLayout>
 
-    </ScrollView>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="등록"
+            android:layout_marginHorizontal="16dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/numbg"
+            android:layout_marginTop="12dp"
+            android:layout_below="@+id/linlayoutEt"
+            />
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>
