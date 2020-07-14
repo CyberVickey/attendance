@@ -16,7 +16,6 @@
         android:id="@+id/resister_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="등록일 : 2020 / 07/ 10"
         android:layout_alignParentRight="true"
 
         />
@@ -33,19 +32,20 @@
 
 
         <ToggleButton
-        android:id="@+id/tb_mon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@drawable/toggle_selector"
-        android:enabled="true"
+            android:id="@+id/tb_mon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/toggle_selector"
+            android:enabled="true"
 
-        android:textOn="월"
-        android:textOff="월"
+            android:textOn="월"
+            android:textOff="월"
 
-        android:textColor="#FF000000"
-        android:layout_below="@+id/tv_nameInfo"
-        android:layout_marginTop="22dp"
-        android:layout_marginLeft="20dp"
+            android:textColor="#FF000000"
+            android:layout_below="@+id/tv_nameInfo"
+            android:layout_marginTop="22dp"
+            android:layout_marginLeft="20dp"
+            android:onClick="clickDay"
         />
 
         <ToggleButton
@@ -335,6 +335,7 @@
             android:background="@drawable/numbg"
             android:layout_marginTop="12dp"
             android:layout_below="@+id/linlayoutEt"
+            android:onClick="clickComplete"
             />
 
     </RelativeLayout>

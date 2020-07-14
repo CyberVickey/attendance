@@ -5,6 +5,9 @@ public class G {
     //student num 받아올 변수
     public static int stuNum;
 
+    //학생 출석 요일
+    public static int attday;
+
     public static boolean isLogin = false;
     public static String nickName; // 프로필 이름
     public static String profileUrl; //프로필 이미지의 uri
