@@ -9,12 +9,30 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.applandeo.materialcalendarview.CalendarView;
+
+import java.util.Calendar;
+
 public class FragmentCalendar extends Fragment {
+
+    CalendarView calendarView;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+
+
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
+
+        calendarView = view.findViewById(R.id.calendarview);
+        Calendar cal = Calendar.getInstance();
+
 
         return view;
     }
