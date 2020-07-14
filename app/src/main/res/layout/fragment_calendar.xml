@@ -14,7 +14,7 @@
         android:textColor="#FFFFFFFF"
         android:background="@color/myColorDark"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="20dp"
         />
 
     <com.applandeo.materialcalendarview.CalendarView
@@ -25,7 +25,7 @@
         android:layout_margin="12dp"
         app:headerColor="@color/cardview_light_background"
         app:headerLabelColor="@color/myColorDeepdark"
-
+        app:todayLabelColor="@color/myColorLemon"
         />
 
 </RelativeLayout>
