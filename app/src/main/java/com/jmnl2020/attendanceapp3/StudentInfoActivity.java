@@ -12,6 +12,7 @@ public class StudentInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_info);
 
+        //앱바 숨기기
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 

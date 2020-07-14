@@ -23,14 +23,6 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="22dp"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="?attr/fabSize"
-        android:layout_height="?attr/fabSize"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="20dp"
-        />
-
     <ToggleButton
         android:id="@+id/tb_mon"
         android:layout_width="30dp"

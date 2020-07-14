@@ -68,7 +68,7 @@ public class FragmentStudent extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), StudentInfoActivity.class);
+                Intent intent = new Intent(getActivity(), StudentEditActivity.class);
                 startActivity(intent);
             }
         });
