@@ -72,11 +72,11 @@ public class FragmentMessage extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(Intent.ACTION_PICK);
-//                intent.setData(ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
-//                startActivityForResult(intent, 100);
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setData(ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
+                startActivityForResult(intent, 100);
 
-                sendSMS(data, G.sendMsg);
+//                sendSMS(data, G.sendMsg);
             }
 
         });
@@ -92,7 +92,7 @@ public class FragmentMessage extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private void sendSMS(String msg){
+    private void sendSMS(Intent data,String msg){
         Cursor cursor = getActivity().getContentResolver().query(data.getData(),
                 new String[]{ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
                 ContactsContract.CommonDataKinds.Phone.NUMBER}, null, null, null);
