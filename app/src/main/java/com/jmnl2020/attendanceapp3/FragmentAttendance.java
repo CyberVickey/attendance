@@ -59,6 +59,8 @@ public class FragmentAttendance extends Fragment {
         recyclerviewItems.add(new ItemAttendanceList("김학생", getTime+""));
         recyclerviewItems.add(new ItemAttendanceList("전학생", getTime+""));
 
+
+
     }
 
     @Nullable

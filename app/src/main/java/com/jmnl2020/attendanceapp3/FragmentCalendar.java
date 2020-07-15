@@ -17,13 +17,9 @@ public class FragmentCalendar extends Fragment {
 
     CalendarView calendarView;
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-
-
+    public FragmentCalendar() {
     }
+
 
     @Nullable
     @Override

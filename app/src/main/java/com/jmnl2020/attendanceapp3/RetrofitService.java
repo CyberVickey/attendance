@@ -16,13 +16,14 @@ public interface RetrofitService {
     //데이터와 파일을 동시에 전송
     @Multipart
     @POST("/Retrofit/insertDB.php")
-    Call<String> postData(@PartMap Map<String, String> datapart,
-                                 @Part MultipartBody.Part filepart);
+    Call<String> postData(@PartMap Map<String, Object> dataPart);
 
     // 서버에서 데이터 json을 읽어와서 GSON라이브러리를 통해 곧바로 자바 객체로 응답결과를 주는 추상메소드
 
     @GET("/Retrofit/load.php")
     Call<ArrayList<StudentDTO>> loadData();
+
+
 
     //
 

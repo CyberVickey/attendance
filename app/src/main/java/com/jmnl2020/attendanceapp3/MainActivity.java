@@ -83,5 +83,18 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+    }//onCreate end.
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //서버에서 데이터를 읽어오기
+        loadData();
     }
+
+    //서버에서 데이터를 불러들이는 작업 메소드
+    void loadData(){
+
+    }
+
 }

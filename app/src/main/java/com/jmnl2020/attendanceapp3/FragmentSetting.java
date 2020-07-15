@@ -26,6 +26,26 @@ public class FragmentSetting extends Fragment {
         linearLayout2 = view.findViewById(R.id.linearlayout2);
         linearLayout3 = view.findViewById(R.id.linearlayout3);
 
+        //안내메세지 수정
+        linearLayout1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),NumberInputActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // 휴,퇴원생 목록
+        linearLayout2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),NumberInputActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        //출석화면으로 전환
         linearLayout3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -14,15 +14,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StudentInfoActivity"></activity>
-        <activity android:name=".StudentEditActivity"></activity>
+        <activity android:name="StudentInfoActivity"></activity>
+        <activity android:name="StudentEditActivity"></activity>
         <activity
-            android:name=".NumberInputActivity"
+            android:name="NumberInputActivity"
             android:label="@string/student_number_input"
             android:theme="@style/customTheme" />
-        <activity android:name=".SelectionActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name="SelectionActivity" />
+        <activity android:name="LoginActivity" />
+        <activity android:name="MainActivity" />
         <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
