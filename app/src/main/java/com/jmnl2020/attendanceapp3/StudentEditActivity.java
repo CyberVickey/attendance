@@ -12,6 +12,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import retrofit2.Retrofit;
 
 public class StudentEditActivity extends AppCompatActivity {
@@ -54,7 +57,8 @@ public class StudentEditActivity extends AppCompatActivity {
 
 
     public void clickComplete(View view){
-        //서버에 데이터 전송 [name, birthday, contact, par1name, par1phone, par2 name, par2phone, toggle]
+        //서버에 데이터 전송 [day, name, birthday, contact, par1name, par1phone, par2 name, par2phone, toggle]
+        int day = G.attday;
         String name = etName.getText().toString();
         int birthday = Integer.parseInt(etBirthday.getText().toString());
         int contact = Integer.parseInt(etContact.getText().toString());
@@ -64,7 +68,17 @@ public class StudentEditActivity extends AppCompatActivity {
         int par2phone = Integer.parseInt(etPrnt2phone.getText().toString());
 
         //레트로핏 라이브러리로 데이터 전송
-        Retrofit retrofit =
+        Retrofit retrofit = RetrofitHelper.getInstance();
+
+        //추상메소드 활용
+        RetrofitService retrofitService = retrofit.create(RetrofitService.class);
+
+        //데이터
+        Map<String, String> dataPart= new HashMap<>();
+        dataPart.put("day", day);
+        dataPart.put("name", name);
+        dataPart.put("contact", contact);
+
 
     }
 
@@ -72,7 +86,7 @@ public class StudentEditActivity extends AppCompatActivity {
     public void clickDay(View v){
         switch (v.getId()){
             case R.id.tb_mon:
-                G.attday = 0b00000001;
+                G.attday |= 0b00000001;
                 break;
             case R.id.tb_tue:
                 G.attday |= 0b00000010;
