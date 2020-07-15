@@ -14,12 +14,22 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
 
     FragmentManager fragmentManager;
     Fragment[] fragments = new Fragment[5];
+
+    //Retrofit으로 받아올 객체의 arraylist
+    ArrayList<StudentDTO> dtos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +107,44 @@ public class MainActivity extends AppCompatActivity {
     //서버에서 데이터를 불러들이는 작업 메소드
     void loadData(){
 
+        Retrofit retrofit = RetrofitHelper.getInstance();
+        RetrofitService retrofitService = retrofit.create(RetrofitService.class);
+        Call<ArrayList <StudentDTO>> call = retrofitService.loadData();
+
+        call.enqueue(new Callback<ArrayList<StudentDTO>>() {
+            @Override
+            public void onResponse(Call<ArrayList<StudentDTO>> call, Response<ArrayList<StudentDTO>> response) {
+                if(response.isSuccessful()){
+                    //서버 데이터를 읽어와서 새로운 arrayList 객체에 넣음
+
+
+
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<StudentDTO>> call, Throwable t) {
+
+            }
+        });
+
+    }//load Data end.
+
+
+    public void parseIntDay(int day){
+        boolean[] checked = new boolean[6];
+        int num = day;
+        int mask = 0b00000001;
+
+        for(int i=0; i<checked.length; i++){
+            num= num>>i;
+            int n = num & mask;
+            if(n==1) checked[i] = true;
+        }
+
     }
+
 
     @Override
     protected void onDestroy() {
