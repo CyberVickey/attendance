@@ -69,7 +69,8 @@ public class FragmentStudent extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), StudentEditActivity.class);
-                startActivity(intent);
+                getActivity().startActivity(intent);
+
             }
         });
 

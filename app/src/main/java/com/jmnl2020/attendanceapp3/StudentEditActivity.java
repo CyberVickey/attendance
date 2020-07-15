@@ -2,6 +2,7 @@ package com.jmnl2020.attendanceapp3;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -43,10 +44,14 @@ public class StudentEditActivity extends AppCompatActivity {
     String par2name = "";
     int par2phone = 0;
 
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_edit);
+
+        Log.i("TAG", "edit Activity");
 
         //앱바 숨기기
         ActionBar actionBar = getSupportActionBar();
@@ -73,18 +78,39 @@ public class StudentEditActivity extends AppCompatActivity {
 
 
     public void clickComplete(View view){
+
+        //체크체크
+        String myString = "";
+
+        Log.d("TAG", "click com");
         //서버에 데이터 전송 [day, name, birthday, contact, par1name, par1phone, par2 name, par2phone, toggle]
         day = G.attday;
+        Log.i("TAG", "insert day");
+
         name = etName.getText().toString();
-        birthday = Integer.parseInt(etBirthday.getText().toString());
-        contact = Integer.parseInt(etContact.getText().toString());
+        Log.i("TAG", "insert name");
+
+        if(etBirthday.getText().toString().equals(myString)) {birthday = 0;} else birthday = Integer.parseInt(etBirthday.getText().toString());
+        Log.i("TAG", "insert bthday");
+
+        if(etContact.getText().toString().equals(myString)) {contact = 0;} else birthday = Integer.parseInt(etContact.getText().toString());
+        Log.i("TAG", "insert contact ");
+
         par1name = etPrnt1name.getText().toString();
-        par1phone = Integer.parseInt(etPrnt1phone.getText().toString());
+        Log.i("TAG", "insert pt1 name ");
+
+        if(etPrnt1phone.getText().toString().equals(myString)) {par1phone = 0;} else par1phone = Integer.parseInt(etPrnt1phone.getText().toString());
+        Log.i("TAG", "insert pt1 phone");
+
         par2name = etPrnt2name.getText().toString();
-        par2phone = Integer.parseInt(etPrnt2phone.getText().toString());
+        Log.i("TAG", "insert pt2 name ");
+
+        if(etPrnt2phone.getText().toString().equals(myString)) {par2phone = 0;} else par2phone = Integer.parseInt(etPrnt2phone.getText().toString());
+        Log.i("TAG", "insert pt2 phone ");
 
         //레트로핏 라이브러리로 데이터 전송
         Retrofit retrofit = RetrofitHelper.getInstance();
+        Log.i("TAG", "retrofit");
 
         //추상메소드 활용
         RetrofitService retrofitService = retrofit.create(RetrofitService.class);
@@ -102,10 +128,12 @@ public class StudentEditActivity extends AppCompatActivity {
 
         //데이터 전송!
         Call<String> call = retrofitService.postData(dataPart);
+        Log.i("TAG", "Before enqueue");
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if(response.isSuccessful()){
+                    Log.i("TAG", "enqueue");
                     String s = response.body();
                     AlertDialog.Builder builder = new AlertDialog.Builder(StudentEditActivity.this);
                     builder.setMessage(s+"").show();
@@ -117,7 +145,8 @@ public class StudentEditActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Snackbar.make(getWindow().getDecorView().getRootView(), t.getMessage(), Snackbar.LENGTH_LONG).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(StudentEditActivity.this);
+                builder.setMessage(t.getMessage()).show();
             }
         });
 

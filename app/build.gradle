@@ -53,6 +53,8 @@ dependencies {
 
     // 카카오톡
     implementation group: 'com.kakao.sdk', name: 'kakaotalk', version: '1.29.0'
+
+    //추가중
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     implementation 'com.android.support:appcompat-v7:29.0.0'
