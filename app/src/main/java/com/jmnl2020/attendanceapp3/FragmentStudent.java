@@ -42,14 +42,18 @@ public class FragmentStudent extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         //학생 아이템 데이터 추가
-        items.add(new ItemStudentList("이학생"));
-        items.add(new ItemStudentList("신학생"));
-        items.add(new ItemStudentList("재학생"));
+//        items.add(new ItemStudentList("이학생"));
+//        items.add(new ItemStudentList("신학생"));
+//        items.add(new ItemStudentList("재학생"));
 
         Toast.makeText(context, "oncreate", Toast.LENGTH_SHORT).show();
+
+        for(int i = 0; i<G.dtos.size(); i++){
+            items.clear();;
+            items.add(new ItemStudentList(G.dtos.get(i).name));
+            //adapter.notifyDataSetChanged();
+        }
 
 
     }

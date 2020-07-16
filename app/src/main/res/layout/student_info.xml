@@ -5,12 +5,21 @@
     android:padding="16dp"
     >
 
-    <TextView
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="등록일 : 2020 / 07/ 10"-->
+<!--        android:layout_alignParentRight="true"-->
+
+<!--        />-->
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="등록일 : 2020 / 07/ 10"
+        android:text="재학"
+        android:backgroundTint="#66BB6A"
         android:layout_alignParentRight="true"
-
+        android:textColor="#FFF"
         />
 
     <TextView
@@ -22,6 +31,17 @@
         android:textSize="20sp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="22dp"/>
+
+
+<!--    <Button-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="재학"-->
+<!--        android:backgroundTint="#66BB6A"-->
+<!--        android:textColor="#FFF"-->
+<!--        android:layout_alignBaseline="@+id/tb_sat"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        />-->
 
     <ToggleButton
         android:id="@+id/tb_mon"
@@ -171,6 +191,13 @@
                 android:layout_marginVertical="20dp"
                 />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="보호자2"
+                android:layout_marginVertical="20dp"
+                />
+
         </LinearLayout>
 
         <LinearLayout
@@ -180,20 +207,21 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_nameinfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="홍길동"
                 android:layout_marginVertical="10dp"
-                />
+                android:text="홍길동" />
 
             <TextView
+                android:id="@+id/tv_bthdayinfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2020 / 07 / 10"
                 android:layout_marginVertical="20dp"
-                />
+                android:text="2020 / 07 / 10" />
 
             <TextView
+                android:id="@+id/tv_contactinfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="없음"
@@ -201,6 +229,7 @@
                 />
 
             <TextView
+                android:id="@+id/tv_par1nameinfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="아버지"
@@ -208,6 +237,22 @@
                 />
 
             <TextView
+                android:id="@+id/tv_par1phoneinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="010-1234-5678"
+                />
+
+            <TextView
+                android:id="@+id/tv_par2nameinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="아버지"
+                android:layout_marginTop="20dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_par2phoneinfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="010-1234-5678"

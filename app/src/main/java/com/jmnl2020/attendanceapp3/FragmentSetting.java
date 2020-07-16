@@ -1,14 +1,19 @@
 package com.jmnl2020.attendanceapp3;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 public class FragmentSetting extends Fragment {
@@ -16,6 +21,17 @@ public class FragmentSetting extends Fragment {
     LinearLayout linearLayout1;
     LinearLayout linearLayout2;
     LinearLayout linearLayout3;
+
+    Context context;
+
+    //Alert Dialog
+    EditText etMsgIn;
+    EditText etMsgOut;
+    EditText etMsg;
+
+    public FragmentSetting(Context context) {
+        this.context = context;
+    }
 
     @Nullable
     @Override
@@ -30,8 +46,41 @@ public class FragmentSetting extends Fragment {
         linearLayout1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),NumberInputActivity.class);
-                startActivity(intent);
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("안내 메세지 수정");
+                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+                View v2 = inflater.inflate(R.layout.edit_message, null);
+                etMsgIn = v2.findViewById(R.id.et_msgIn);
+                etMsgOut = v2.findViewById(R.id.et_msgOut);
+                etMsg = v2.findViewById(R.id.et_msg);
+
+                builder.setView(v2);
+
+                //확인버튼 만들기
+                builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //edit text 에서 바뀐 내용 업데이트.
+                        G.msgIn = etMsgIn.getText().toString();
+                        G.msgOut = etMsgOut.getText().toString();
+                        G.sendMsg = etMsg.getText().toString();
+
+                        Toast.makeText(context, "변경된 내용을 저장했습니다!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                //취소버튼 만들기
+                builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //아무일도 없음
+                        Toast.makeText(context, "아무일도 일어나지 않았다..", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                builder.show();
+
             }
         });
 

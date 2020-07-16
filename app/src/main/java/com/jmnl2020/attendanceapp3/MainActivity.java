@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         fragments[1] = new FragmentAttendance(this);
         fragments[2] = new FragmentMessage(this);
         fragments[3] = new FragmentStudent(this);
-        fragments[4] = new FragmentSetting();
+        fragments[4] = new FragmentSetting(this);
 
         //제일 처음 띄워줄 뷰 세팅
         getSupportFragmentManager().beginTransaction().replace(R.id.container, fragments[0]).commitAllowingStateLoss();
@@ -132,9 +132,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }//load Data end.
-
-
-
 
 
     @Override

@@ -16,7 +16,6 @@ import android.webkit.JavascriptInterface;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,7 +34,7 @@ public class FragmentMessage extends Fragment {
 
     ListView listView;
     ArrayList<ItemMessageFragment> listItem = new ArrayList<>();
-    AdapterMessageFragment adapter = new AdapterMessageFragment();;
+    AdapterMessageFragment adapter = new AdapterMessageFragment(listItem);
 
     //전체선택 가능하게 만들어주자
     boolean checkbox = false;
@@ -51,12 +50,18 @@ public class FragmentMessage extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ArrayList<String> names = new ArrayList<>();
+//        ArrayList<String> names = new ArrayList<>();
+//
+//        for(int i=0; i<G.dtos.size(); i++){
+//            names.set(i, G.dtos.get(i).name);
+//            adapter.notifyDataSetChanged();
+//        }
 
-        for(int i=0; i<G.dtos.size(); i++){
-            names.add(G.dtos.get(i).name);
-            adapter.notifyDataSetChanged();
+        for(int i = 0; i<G.dtos.size(); i++){
+            listItem.clear();;
+            listItem.add(new ItemMessageFragment(G.dtos.get(i).name.toString()));
         }
+        adapter.notifyDataSetChanged();
 
     }
 
@@ -111,6 +116,7 @@ public class FragmentMessage extends Fragment {
         Intent intent = new Intent(Intent.ACTION_SENDTO, n);
         intent.putExtra("sms_body", msg);
         startActivity(intent);
+
     }
 
 

@@ -19,8 +19,9 @@ public class G {
     public static String profileUrl; //프로필 이미지의 uri
 
     //메세지 보낼 문구
-    public static String sendMsg = "안녕하세요.";
-
+    public static String msgIn = "";
+    public static String msgOut = "";
+    public static String sendMsg = "";
 
     public void parseIntDay(int day){
         boolean[] checked = new boolean[6];
