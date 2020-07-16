@@ -23,5 +23,7 @@ public class StudentDTO {
         this.par1phone = par1phone;
         this.par2name = par2name;
         this.par2phone = par2phone;
+
     }
+
 }

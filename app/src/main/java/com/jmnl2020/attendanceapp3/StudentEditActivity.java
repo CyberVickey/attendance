@@ -15,14 +15,19 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class StudentEditActivity extends AppCompatActivity {
 
@@ -114,6 +119,7 @@ public class StudentEditActivity extends AppCompatActivity {
 
         //추상메소드 활용
         RetrofitService retrofitService = retrofit.create(RetrofitService.class);
+        Log.i("TAG", "retrofitService");
 
         //데이터
         Map<String, Object> dataPart= new HashMap<>(); //보내야하는 값이 int, String 등 하나 이상일때는 object
@@ -125,18 +131,30 @@ public class StudentEditActivity extends AppCompatActivity {
         dataPart.put("par1phone", par1phone);
         dataPart.put("par2name", par2name);
         dataPart.put("par2phone", par2phone);
+        Log.i("TAG", "Put data");
 
         //데이터 전송!
         Call<String> call = retrofitService.postData(dataPart);
-        Log.i("TAG", "Before enqueue");
+        Log.i("TAG", "Before enqueue"); //확인
+
+        //에러를 해결해보자
+//        OkHttpClient client = new OkHttpClient();
+//
+//        Gson gson = new GsonBuilder().setLenient().create();
+//
+//        Retrofit retrofit1 = new Retrofit.Builder().baseUrl("http://projectjm.dothome.co.kr")
+//                .client(client).addConverterFactory(GsonConverterFactory.create(gson)).build();
+
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if(response.isSuccessful()){
                     Log.i("TAG", "enqueue");
+
                     String s = response.body();
                     AlertDialog.Builder builder = new AlertDialog.Builder(StudentEditActivity.this);
                     builder.setMessage(s+"").show();
+
 
                     //액티비티 종료
                     finish();

@@ -23,8 +23,4 @@ public interface RetrofitService {
     @GET("/Retrofit/load.php")
     Call<ArrayList<StudentDTO>> loadData();
 
-
-
-    //
-
 }

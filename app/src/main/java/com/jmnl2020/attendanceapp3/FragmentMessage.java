@@ -51,10 +51,12 @@ public class FragmentMessage extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        adapter.addItem("김학생");
-        adapter.addItem("이학생");
-        adapter.addItem("박학생");
+        ArrayList<String> names = new ArrayList<>();
 
+        for(int i=0; i<G.dtos.size(); i++){
+            names.add(G.dtos.get(i).name);
+            adapter.notifyDataSetChanged();
+        }
 
     }
 

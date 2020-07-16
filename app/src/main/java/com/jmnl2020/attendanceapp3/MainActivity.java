@@ -2,6 +2,7 @@ package com.jmnl2020.attendanceapp3;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -28,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
     Fragment[] fragments = new Fragment[5];
 
-    //Retrofit으로 받아올 객체의 arraylist
-    ArrayList<StudentDTO> dtos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,11 +96,14 @@ public class MainActivity extends AppCompatActivity {
 
     }//onCreate end.
 
+
     @Override
     protected void onResume() {
         super.onResume();
+
         //서버에서 데이터를 읽어오기
-        loadData();
+        //loadData();
+
     }
 
     //서버에서 데이터를 불러들이는 작업 메소드
@@ -115,35 +117,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ArrayList<StudentDTO>> call, Response<ArrayList<StudentDTO>> response) {
                 if(response.isSuccessful()){
-                    //서버 데이터를 읽어와서 새로운 arrayList 객체에 넣음
-
-
-
+                    //서버 데이터를 읽어와서 G 에 대입!
+                    G.dtos.clear();
+                    G.dtos = response.body();
 
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<StudentDTO>> call, Throwable t) {
-
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage(t.getMessage()).show();
             }
         });
 
     }//load Data end.
 
 
-    public void parseIntDay(int day){
-        boolean[] checked = new boolean[6];
-        int num = day;
-        int mask = 0b00000001;
 
-        for(int i=0; i<checked.length; i++){
-            num= num>>i;
-            int n = num & mask;
-            if(n==1) checked[i] = true;
-        }
-
-    }
 
 
     @Override

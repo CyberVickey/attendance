@@ -1,11 +1,9 @@
 package com.jmnl2020.attendanceapp3;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import android.util.Log;
 
-import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RetrofitHelper {
 
@@ -15,12 +13,9 @@ public class RetrofitHelper {
 
         Retrofit.Builder builder = new Retrofit.Builder();
         builder.baseUrl("http://projectjm.dothome.co.kr/");
-        builder.addConverterFactory(GsonConverterFactory.create());
+        builder.addConverterFactory(ScalarsConverterFactory.create());
 
-//        Gson gson = new GsonBuilder().setLenient().create();
-//        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://projectjm.dothome.co.kr/")
-//                .client(client)
-//                .addConverterFactory(GsonConverterFactory.create(gson)).build();
+        Log.i("TAG", "addConverterFactory");
 
         return builder.build();
     }
