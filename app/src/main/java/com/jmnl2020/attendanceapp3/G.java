@@ -23,16 +23,18 @@ public class G {
     public static String msgOut = "";
     public static String sendMsg = "";
 
-    public void parseIntDay(int day){
+    public static boolean[] parseIntDay(int day){
         boolean[] checked = new boolean[6];
         int num = day;
         int mask = 0b00000001;
 
         for(int i=0; i<checked.length; i++){
-            num= num>>i;
+            num= num>>1;
             int n = num & mask;
             if(n==1) checked[i] = true;
         }
+
+        return checked;
     }
 
 

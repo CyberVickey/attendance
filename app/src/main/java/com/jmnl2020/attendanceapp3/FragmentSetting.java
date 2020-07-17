@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,22 +17,23 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class FragmentSetting extends Fragment {
 
     LinearLayout linearLayout1;
     LinearLayout linearLayout2;
     LinearLayout linearLayout3;
 
-    Context context;
+    //profile
+    CircleImageView cv;
+    TextView name;
 
     //Alert Dialog
     EditText etMsgIn;
     EditText etMsgOut;
     EditText etMsg;
 
-    public FragmentSetting(Context context) {
-        this.context = context;
-    }
 
     @Nullable
     @Override
@@ -42,13 +44,20 @@ public class FragmentSetting extends Fragment {
         linearLayout2 = view.findViewById(R.id.linearlayout2);
         linearLayout3 = view.findViewById(R.id.linearlayout3);
 
+        //profile
+        cv = view.findViewById(R.id.cv);
+        name = view.findViewById(R.id.tv_settingname);
+
+        name.setText(G.nickName);
+        //cv.setImageResource(Integer.parseInt(G.profileUrl));
+
         //안내메세지 수정
         linearLayout1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("안내 메세지 수정");
-                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
                 View v2 = inflater.inflate(R.layout.edit_message, null);
                 etMsgIn = v2.findViewById(R.id.et_msgIn);
@@ -66,7 +75,7 @@ public class FragmentSetting extends Fragment {
                         G.msgOut = etMsgOut.getText().toString();
                         G.sendMsg = etMsg.getText().toString();
 
-                        Toast.makeText(context, "변경된 내용을 저장했습니다!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "변경된 내용을 저장했습니다!", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -75,7 +84,7 @@ public class FragmentSetting extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //아무일도 없음
-                        Toast.makeText(context, "아무일도 일어나지 않았다..", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "아무일도 일어나지 않았다..", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -90,6 +99,8 @@ public class FragmentSetting extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),NumberInputActivity.class);
                 startActivity(intent);
+
+
             }
         });
 

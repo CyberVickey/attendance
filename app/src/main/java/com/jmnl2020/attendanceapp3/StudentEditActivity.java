@@ -40,7 +40,7 @@ public class StudentEditActivity extends AppCompatActivity {
     EditText etPrnt2name;
     EditText etPrnt2phone;
 
-    int day = 0;
+    int day =0;
     String name = "";
     int birthday = 0;
     int contact = 0;
@@ -98,7 +98,7 @@ public class StudentEditActivity extends AppCompatActivity {
         if(etBirthday.getText().toString().equals(myString)) {birthday = 0;} else birthday = Integer.parseInt(etBirthday.getText().toString());
         Log.i("TAG", "insert bthday");
 
-        if(etContact.getText().toString().equals(myString)) {contact = 0;} else birthday = Integer.parseInt(etContact.getText().toString());
+        if(etContact.getText().toString().equals(myString)) {contact = 0;} else contact = Integer.parseInt(etContact.getText().toString());
         Log.i("TAG", "insert contact ");
 
         par1name = etPrnt1name.getText().toString();
@@ -113,6 +113,30 @@ public class StudentEditActivity extends AppCompatActivity {
         if(etPrnt2phone.getText().toString().equals(myString)) {par2phone = 0;} else par2phone = Integer.parseInt(etPrnt2phone.getText().toString());
         Log.i("TAG", "insert pt2 phone ");
 
+
+
+        ////////////////////////임시저장/////////////////////////
+
+        //        birthday = etBirthday.getText().toString();
+//        Log.i("TAG", "insert bthday");
+//
+//        contact = etContact.getText().toString();
+//        Log.i("TAG", "insert contact ");
+//
+//        par1name = etPrnt1name.getText().toString();
+//        Log.i("TAG", "insert pt1 name ");
+//
+//        par1phone = etPrnt1phone.getText().toString();
+//        Log.i("TAG", "insert pt1 phone");
+//
+//        par2name = etPrnt2name.getText().toString();
+//        Log.i("TAG", "insert pt2 name ");
+//
+//        par2phone = etPrnt2phone.getText().toString();
+//        Log.i("TAG", "insert pt2 phone ");
+
+
+
         //레트로핏 라이브러리로 데이터 전송
         Retrofit retrofit = RetrofitHelper.getInstance();
         Log.i("TAG", "retrofit");
@@ -122,15 +146,15 @@ public class StudentEditActivity extends AppCompatActivity {
         Log.i("TAG", "retrofitService");
 
         //데이터
-        Map<String, Object> dataPart= new HashMap<>(); //보내야하는 값이 int, String 등 하나 이상일때는 object
-        dataPart.put("day", day);
+        Map<String, String> dataPart= new HashMap<>(); //보내야하는 값이 int, String 등 하나 이상일때는 object
+        dataPart.put("day", day+"");
         dataPart.put("name", name);
-        dataPart.put("birthday", birthday);
-        dataPart.put("contact", contact);
+        dataPart.put("birthday", birthday+"");
+        dataPart.put("contact", contact+"");
         dataPart.put("par1name", par1name);
-        dataPart.put("par1phone", par1phone);
+        dataPart.put("par1phone", par1phone+"");
         dataPart.put("par2name", par2name);
-        dataPart.put("par2phone", par2phone);
+        dataPart.put("par2phone", par2phone+"");
         Log.i("TAG", "Put data");
 
         //데이터 전송!
@@ -152,8 +176,9 @@ public class StudentEditActivity extends AppCompatActivity {
                     Log.i("TAG", "enqueue");
 
                     String s = response.body();
-                    AlertDialog.Builder builder = new AlertDialog.Builder(StudentEditActivity.this);
-                    builder.setMessage(s+"").show();
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(StudentEditActivity.this);
+//                    builder.setMessage(s+"").show();
+                    Toast.makeText(StudentEditActivity.this, s+"", Toast.LENGTH_SHORT).show();
 
 
                     //액티비티 종료

@@ -24,8 +24,6 @@ import java.util.ArrayList;
 
 public class FragmentStudent extends Fragment {
 
-    Context context;
-
     ///////////////리사이클러뷰///////////////
     ArrayList<ItemStudentList> items = new ArrayList<>();
     RecyclerView recyclerView;
@@ -35,23 +33,16 @@ public class FragmentStudent extends Fragment {
     FloatingActionButton fab;
 
 
-    public FragmentStudent(Context context) {
-        this.context = context;
-    }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //학생 아이템 데이터 추가
-//        items.add(new ItemStudentList("이학생"));
-//        items.add(new ItemStudentList("신학생"));
-//        items.add(new ItemStudentList("재학생"));
+        Toast.makeText(getActivity(), "oncreate", Toast.LENGTH_SHORT).show();
 
-        Toast.makeText(context, "oncreate", Toast.LENGTH_SHORT).show();
-
+        items.clear();;
         for(int i = 0; i<G.dtos.size(); i++){
-            items.clear();;
-            items.add(new ItemStudentList(G.dtos.get(i).name));
+
+            items.add(new ItemStudentList(G.dtos.get(i).name, Integer.parseInt(G.dtos.get(i).day)));
             //adapter.notifyDataSetChanged();
         }
 
@@ -63,7 +54,7 @@ public class FragmentStudent extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_student, container, false);
 
-        adapter = new AdapterStudentFragment(context, items);
+        adapter = new AdapterStudentFragment(getActivity(), items);
         recyclerView = view.findViewById(R.id.recyclerview_frg4);
         recyclerView.setAdapter(adapter);
 

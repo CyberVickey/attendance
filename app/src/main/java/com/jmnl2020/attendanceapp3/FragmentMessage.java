@@ -30,8 +30,6 @@ import static android.app.Activity.RESULT_OK;
 
 public class FragmentMessage extends Fragment {
 
-    Context context;
-
     ListView listView;
     ArrayList<ItemMessageFragment> listItem = new ArrayList<>();
     AdapterMessageFragment adapter = new AdapterMessageFragment(listItem);
@@ -41,10 +39,6 @@ public class FragmentMessage extends Fragment {
 
     //click msg fab
     FloatingActionButton fab;
-
-    public FragmentMessage(Context context) {
-        this.context = context;
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,11 +51,9 @@ public class FragmentMessage extends Fragment {
 //            adapter.notifyDataSetChanged();
 //        }
 
-        for(int i = 0; i<G.dtos.size(); i++){
-            listItem.clear();;
-            listItem.add(new ItemMessageFragment(G.dtos.get(i).name.toString()));
-        }
-        adapter.notifyDataSetChanged();
+        Log.i("load","onCreate");
+
+
 
     }
 
@@ -72,6 +64,13 @@ public class FragmentMessage extends Fragment {
 
         listView = view.findViewById(R.id.listview_msgfg);
         listView.setAdapter(adapter);
+
+        listItem.clear();
+        for(int i = 0; i<G.dtos.size(); i++){
+            listItem.add(new ItemMessageFragment(G.dtos.get(i).name.toString()));
+        }Log.i("load","done for");
+        adapter.notifyDataSetChanged();
+        Log.i("load","onCreateView");
 
         //fab
         fab = view.findViewById(R.id.fab_msg);

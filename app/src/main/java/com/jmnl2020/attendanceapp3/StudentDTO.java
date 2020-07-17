@@ -2,19 +2,19 @@ package com.jmnl2020.attendanceapp3;
 
 public class StudentDTO {
 
-    int day;
+    String day;
     String name;
-    int birthday;
+    String birthday;
     String contact;
     String par1name;
-    int par1phone;
+    String par1phone;
     String par2name;
-    int par2phone;
+    String par2phone;
 
     public StudentDTO() {
     }
 
-    public StudentDTO(int day, String name, int birthday, String contact, String par1name, int par1phone, String par2name, int par2phone) {
+    public StudentDTO(String day, String name, String birthday, String contact, String par1name, String par1phone, String par2name, String par2phone) {
         this.day = day;
         this.name = name;
         this.birthday = birthday;

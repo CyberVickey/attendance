@@ -44,10 +44,10 @@ public class MainActivity extends AppCompatActivity {
 
         //각 탭 화면의 프래그먼트 생성
         fragments[0] = new FragmentCalendar();
-        fragments[1] = new FragmentAttendance(this);
-        fragments[2] = new FragmentMessage(this);
-        fragments[3] = new FragmentStudent(this);
-        fragments[4] = new FragmentSetting(this);
+        fragments[1] = new FragmentAttendance();
+        fragments[2] = new FragmentMessage();
+        fragments[3] = new FragmentStudent();
+        fragments[4] = new FragmentSetting();
 
         //제일 처음 띄워줄 뷰 세팅
         getSupportFragmentManager().beginTransaction().replace(R.id.container, fragments[0]).commitAllowingStateLoss();
@@ -102,14 +102,16 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         //서버에서 데이터를 읽어오기
-        //loadData();
+        loadData();
 
     }
 
     //서버에서 데이터를 불러들이는 작업 메소드
     void loadData(){
 
-        Retrofit retrofit = RetrofitHelper.getInstance();
+
+
+        Retrofit retrofit = RetrofitHelper.getInstance2();
         RetrofitService retrofitService = retrofit.create(RetrofitService.class);
         Call<ArrayList <StudentDTO>> call = retrofitService.loadData();
 
@@ -117,9 +119,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ArrayList<StudentDTO>> call, Response<ArrayList<StudentDTO>> response) {
                 if(response.isSuccessful()){
+
                     //서버 데이터를 읽어와서 G 에 대입!
                     G.dtos.clear();
-                    G.dtos = response.body();
+
+//                    for(int i=0; i<response.body().size(); i++){
+
+                    ArrayList<StudentDTO> items = response.body();
+                    for(StudentDTO dto : items){
+                        G.dtos.add(0, dto);
+                    }
+
+
 
                 }
             }
@@ -128,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call<ArrayList<StudentDTO>> call, Throwable t) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setMessage(t.getMessage()).show();
+
             }
         });
 

@@ -3,6 +3,7 @@ package com.jmnl2020.attendanceapp3;
 import android.util.Log;
 
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RetrofitHelper {
@@ -20,6 +21,13 @@ public class RetrofitHelper {
         return builder.build();
     }
 
-    //Scalarsconverter
+    public static Retrofit getInstance2(){
+
+        Retrofit.Builder builder = new Retrofit.Builder();
+        builder.baseUrl("http://projectjm.dothome.co.kr/");
+        builder.addConverterFactory(GsonConverterFactory.create());
+
+        return builder.build();
+    }
 
 }

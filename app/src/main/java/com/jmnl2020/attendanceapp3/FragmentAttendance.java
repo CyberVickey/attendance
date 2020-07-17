@@ -25,18 +25,11 @@ import java.util.Date;
 
 public class FragmentAttendance extends Fragment {
 
-    Context context;
-
-
     //////////////////////리사이클러뷰 ////////////////////////////////
     //Item (Cardview) 안에 입력할 대량의 데이터 임의생성
     ArrayList<ItemAttendanceList> recyclerviewItems = new ArrayList<>();
     RecyclerView recyclerView;
     AdapterAttendanceFragment attendanceAdapter;
-
-    public FragmentAttendance(Context context) {
-        this.context = context;
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,8 +52,6 @@ public class FragmentAttendance extends Fragment {
         recyclerviewItems.add(new ItemAttendanceList("김학생", getTime+""));
         recyclerviewItems.add(new ItemAttendanceList("전학생", getTime+""));
 
-
-
     }
 
     @Nullable
@@ -72,7 +63,7 @@ public class FragmentAttendance extends Fragment {
 
         //fragment와 연결된 xml 파일을 여기서 inflate
 
-        attendanceAdapter = new AdapterAttendanceFragment(context, recyclerviewItems);
+        attendanceAdapter = new AdapterAttendanceFragment(getActivity(), recyclerviewItems);
         recyclerView = view.findViewById(R.id.recyclerview_frg2);
         recyclerView.setAdapter(attendanceAdapter);
 

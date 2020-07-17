@@ -94,8 +94,8 @@ public class LoginActivity extends AppCompatActivity {
                 Profile profile = userAccount.getProfile();
                 if(profile == null ) return;
 
-                String nickName = profile.getNickname();
-                String imgUrl = profile.getProfileImageUrl();
+                G.nickName = profile.getNickname();
+                G.profileUrl = profile.getProfileImageUrl();
                 String thumbnailImgUrl = profile.getThumbnailImageUrl();
 
                 //받아온 정보를 MainActivity - Setting fragment 로 전달.
