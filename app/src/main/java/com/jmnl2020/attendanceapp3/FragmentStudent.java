@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,15 +40,28 @@ public class FragmentStudent extends Fragment {
         //학생 아이템 데이터 추가
         Toast.makeText(getActivity(), "oncreate", Toast.LENGTH_SHORT).show();
 
-        items.clear();;
-        for(int i = 0; i<G.dtos.size(); i++){
+        items.clear();
 
-            items.add(new ItemStudentList(G.dtos.get(i).name, Integer.parseInt(G.dtos.get(i).day)));
-            //adapter.notifyDataSetChanged();
+//        int x = 0;
+//        boolean[] dayCheck = parseIntDay(Integer.parseInt(G.dtos.get(x).day));
+
+        for(int i = 0; i<G.dtos.size(); i++){
+            items.add(new ItemStudentList(G.dtos.get(i).name));
         }
 
 
+//        items.add(new ItemStudentList(G.dtos.get(x).name.toString(), Integer.parseInt(G.dtos.get(x).day)));
+
+//        for(int i = 0; i<G.dtos.size(); i++){
+//
+//            items.add(new ItemStudentList(G.dtos.get(i).name, Integer.parseInt(G.dtos.get(i).day)));
+//            //adapter.notifyDataSetChanged();
+//        }
+
     }
+
+
+
 
     @Nullable
     @Override
@@ -71,4 +85,7 @@ public class FragmentStudent extends Fragment {
 
         return view;
     }
+
 }
+
+

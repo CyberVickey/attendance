@@ -3,6 +3,7 @@ package com.jmnl2020.attendanceapp3;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,14 +50,15 @@ public class AdapterStudentFragment extends RecyclerView.Adapter {
         //2. 개인의 토글버튼을 체크해주는 메소드가 필요
 
         //토글버튼 on/off
-        boolean[] checking =G.parseIntDay(position);
+        boolean[] checking =parseIntDay(Integer.parseInt(G.dtos.get(position).day));
 
-        viewHolder.tbMon.setChecked(checking[0]);
-        viewHolder.tbTue.setChecked(checking[1]);
-        viewHolder.tbWed.setChecked(checking[2]);
-        viewHolder.tbThu.setChecked(checking[3]);
-        viewHolder.tbFri.setChecked(checking[4]);
-        viewHolder.tbSat.setChecked(checking[5]);
+        viewHolder.tbMon.setChecked(checking[1]);
+        viewHolder.tbTue.setChecked(checking[2]);
+        viewHolder.tbWed.setChecked(checking[3]);
+        viewHolder.tbThu.setChecked(checking[4]);
+        viewHolder.tbFri.setChecked(checking[5]);
+        viewHolder.tbSat.setChecked(checking[6]);
+
 
     }
 
@@ -64,12 +66,33 @@ public class AdapterStudentFragment extends RecyclerView.Adapter {
     public int getItemCount() {
         return items.size();
     }
+
+
+    public static boolean[] parseIntDay(int day) {
+        boolean[] checked = new boolean[7];
+        int num = day;
+        int mask = 0b00000001;
+
+        for (int i = 1; i < 7; i++) {
+            num = num >> 1;
+            int n = num & mask;
+            if (n == 1) {
+                checked[i] = true;
+            } else {
+                checked[i] = false;
+            }
+            Log.i("aaa", checked[i] + "");
+        }
+        return checked;
+    }
+
 }
 
 class ViewHolder extends RecyclerView.ViewHolder {
 
     ToggleButton tbMon, tbTue, tbWed, tbThu, tbFri, tbSat;
     TextView tv;
+
 
     public ViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -83,7 +106,6 @@ class ViewHolder extends RecyclerView.ViewHolder {
         tbSat = itemView.findViewById(R.id.tb_sat);
 
 
-
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,6 +113,7 @@ class ViewHolder extends RecyclerView.ViewHolder {
                 //student info xml 이용해서 alertdialog 만들기
                 //AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
+                //AlertDialog.Builder builder = new AlertDialog.Builder(getActivity);
 
 
             }

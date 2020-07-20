@@ -5,8 +5,12 @@ public class ItemStudentList {
     String studentName;
     int day;
 
-    public ItemStudentList(String studentName, int day) {
+    public ItemStudentList(String studentName) {
         this.studentName = studentName;
-        this.day = day;
     }
+
+//    public ItemStudentList(String studentName, int day) {
+//        this.studentName = studentName;
+//        this.day = day;
+//    }
 }

@@ -1,5 +1,7 @@
 package com.jmnl2020.attendanceapp3;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 public class G {
@@ -28,12 +30,16 @@ public class G {
         int num = day;
         int mask = 0b00000001;
 
-        for(int i=0; i<checked.length; i++){
+        for(int i=1; i<7; i++){
             num= num>>1;
             int n = num & mask;
-            if(n==1) checked[i] = true;
+            if(n==1) {
+                checked[i] = true;
+            } else {
+                checked[i] = false;
+            }
+            Log.i("aaa", checked[i]+"");
         }
-
         return checked;
     }
 
