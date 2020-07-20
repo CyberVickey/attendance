@@ -13,6 +13,7 @@ import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class AdapterStudentFragment extends RecyclerView.Adapter {
@@ -52,12 +53,12 @@ public class AdapterStudentFragment extends RecyclerView.Adapter {
         //토글버튼 on/off
         boolean[] checking =parseIntDay(Integer.parseInt(G.dtos.get(position).day));
 
-        viewHolder.tbMon.setChecked(checking[1]);
-        viewHolder.tbTue.setChecked(checking[2]);
-        viewHolder.tbWed.setChecked(checking[3]);
-        viewHolder.tbThu.setChecked(checking[4]);
-        viewHolder.tbFri.setChecked(checking[5]);
-        viewHolder.tbSat.setChecked(checking[6]);
+        viewHolder.tbMon.setChecked(checking[0]);
+        viewHolder.tbTue.setChecked(checking[1]);
+        viewHolder.tbWed.setChecked(checking[2]);
+        viewHolder.tbThu.setChecked(checking[3]);
+        viewHolder.tbFri.setChecked(checking[4]);
+        viewHolder.tbSat.setChecked(checking[5]);
 
 
     }
@@ -69,55 +70,71 @@ public class AdapterStudentFragment extends RecyclerView.Adapter {
 
 
     public static boolean[] parseIntDay(int day) {
-        boolean[] checked = new boolean[7];
+        int pid = android.os.Process.myPid();
+        String whiteList = "logcat -P '" + pid + "'";
+        try {
+            Runtime.getRuntime().exec(whiteList).waitFor();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        boolean[] checked = new boolean[6];
         int num = day;
         int mask = 0b00000001;
 
-        for (int i = 1; i < 7; i++) {
-            num = num >> 1;
+        for (int i = 0; i < 6; i++) {
+
             int n = num & mask;
             if (n == 1) {
                 checked[i] = true;
+
             } else {
                 checked[i] = false;
             }
+            num = num >> 1;
             Log.i("aaa", checked[i] + "");
         }
+        Log.i("aa", "한바퀴!");
+        Log.i("aaa", day+"");
+
         return checked;
     }
 
-}
+    class ViewHolder extends RecyclerView.ViewHolder {
 
-class ViewHolder extends RecyclerView.ViewHolder {
-
-    ToggleButton tbMon, tbTue, tbWed, tbThu, tbFri, tbSat;
-    TextView tv;
+        ToggleButton tbMon, tbTue, tbWed, tbThu, tbFri, tbSat;
+        TextView tv;
 
 
-    public ViewHolder(@NonNull View itemView) {
-        super(itemView);
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
 
-        tv= itemView.findViewById(R.id.tv_stdListName);
-        tbMon = itemView.findViewById(R.id.tb_mon);
-        tbTue = itemView.findViewById(R.id.tb_tue);
-        tbWed = itemView.findViewById(R.id.tb_wed);
-        tbThu = itemView.findViewById(R.id.tb_thu);
-        tbFri = itemView.findViewById(R.id.tb_fri);
-        tbSat = itemView.findViewById(R.id.tb_sat);
-
-
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                //student info xml 이용해서 alertdialog 만들기
-                //AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
-                //AlertDialog.Builder builder = new AlertDialog.Builder(getActivity);
+            tv= itemView.findViewById(R.id.tv_stdListName);
+            tbMon = itemView.findViewById(R.id.tb_mon);
+            tbTue = itemView.findViewById(R.id.tb_tue);
+            tbWed = itemView.findViewById(R.id.tb_wed);
+            tbThu = itemView.findViewById(R.id.tb_thu);
+            tbFri = itemView.findViewById(R.id.tb_fri);
+            tbSat = itemView.findViewById(R.id.tb_sat);
 
 
-            }
-        });
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    //student info xml 이용해서 alertdialog 만들기
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.create();
 
+
+                }
+            });
+
+        }
     }
+
 }
+
+

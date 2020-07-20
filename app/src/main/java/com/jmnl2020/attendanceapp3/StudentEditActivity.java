@@ -49,7 +49,8 @@ public class StudentEditActivity extends AppCompatActivity {
     String par2name = "";
     int par2phone = 0;
 
-
+    //토글버튼 배열
+    boolean[] check = new boolean[6];
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,59 +83,48 @@ public class StudentEditActivity extends AppCompatActivity {
     }
 
 
-    public void clickComplete(View view){
+    public void clickComplete(View view) {
 
         //체크체크
         String myString = "";
 
         Log.d("TAG", "click com");
         //서버에 데이터 전송 [day, name, birthday, contact, par1name, par1phone, par2 name, par2phone, toggle]
-        day = G.attday;
-        Log.i("TAG", "insert day");
 
         name = etName.getText().toString();
-        Log.i("TAG", "insert name");
 
-        if(etBirthday.getText().toString().equals(myString)) {birthday = 0;} else birthday = Integer.parseInt(etBirthday.getText().toString());
-        Log.i("TAG", "insert bthday");
-
-        if(etContact.getText().toString().equals(myString)) {contact = 0;} else contact = Integer.parseInt(etContact.getText().toString());
-        Log.i("TAG", "insert contact ");
-
+        if (etBirthday.getText().toString().equals(myString)) {
+            birthday = 0;
+        } else birthday = Integer.parseInt(etBirthday.getText().toString());
+        if (etContact.getText().toString().equals(myString)) {
+            contact = 0;
+        } else contact = Integer.parseInt(etContact.getText().toString());
         par1name = etPrnt1name.getText().toString();
-        Log.i("TAG", "insert pt1 name ");
-
-        if(etPrnt1phone.getText().toString().equals(myString)) {par1phone = 0;} else par1phone = Integer.parseInt(etPrnt1phone.getText().toString());
-        Log.i("TAG", "insert pt1 phone");
-
+        if (etPrnt1phone.getText().toString().equals(myString)) {
+            par1phone = 0;
+        } else par1phone = Integer.parseInt(etPrnt1phone.getText().toString());
         par2name = etPrnt2name.getText().toString();
-        Log.i("TAG", "insert pt2 name ");
-
-        if(etPrnt2phone.getText().toString().equals(myString)) {par2phone = 0;} else par2phone = Integer.parseInt(etPrnt2phone.getText().toString());
-        Log.i("TAG", "insert pt2 phone ");
-
+        if (etPrnt2phone.getText().toString().equals(myString)) {
+            par2phone = 0;
+        } else par2phone = Integer.parseInt(etPrnt2phone.getText().toString());
 
 
-        ////////////////////////임시저장/////////////////////////
+        //boolean
+        check[0] = mon.isChecked();
+        check[1] = tue.isChecked();
+        check[2] = wed.isChecked();
+        check[3] = thu.isChecked();
+        check[4] = fri.isChecked();
+        check[5] = sat.isChecked();
 
-        //        birthday = etBirthday.getText().toString();
-//        Log.i("TAG", "insert bthday");
-//
-//        contact = etContact.getText().toString();
-//        Log.i("TAG", "insert contact ");
-//
-//        par1name = etPrnt1name.getText().toString();
-//        Log.i("TAG", "insert pt1 name ");
-//
-//        par1phone = etPrnt1phone.getText().toString();
-//        Log.i("TAG", "insert pt1 phone");
-//
-//        par2name = etPrnt2name.getText().toString();
-//        Log.i("TAG", "insert pt2 name ");
-//
-//        par2phone = etPrnt2phone.getText().toString();
-//        Log.i("TAG", "insert pt2 phone ");
+        int num = 0b00000001;
+        for (int i = 0; i < check.length; i++) {
 
+            if (check[i] == true) day |= num;
+            num = num << 1;
+
+        }
+        Log.i("ccc", day + "");
 
 
         //레트로핏 라이브러리로 데이터 전송
@@ -146,15 +136,15 @@ public class StudentEditActivity extends AppCompatActivity {
         Log.i("TAG", "retrofitService");
 
         //데이터
-        Map<String, String> dataPart= new HashMap<>(); //보내야하는 값이 int, String 등 하나 이상일때는 object
-        dataPart.put("day", day+"");
+        Map<String, String> dataPart = new HashMap<>(); //보내야하는 값이 int, String 등 하나 이상일때는 object
+        dataPart.put("day", day + "");
         dataPart.put("name", name);
-        dataPart.put("birthday", birthday+"");
-        dataPart.put("contact", contact+"");
+        dataPart.put("birthday", birthday + "");
+        dataPart.put("contact", contact + "");
         dataPart.put("par1name", par1name);
-        dataPart.put("par1phone", par1phone+"");
+        dataPart.put("par1phone", par1phone + "");
         dataPart.put("par2name", par2name);
-        dataPart.put("par2phone", par2phone+"");
+        dataPart.put("par2phone", par2phone + "");
         Log.i("TAG", "Put data");
 
         //데이터 전송!
@@ -172,13 +162,13 @@ public class StudentEditActivity extends AppCompatActivity {
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     Log.i("TAG", "enqueue");
 
                     String s = response.body();
 //                    AlertDialog.Builder builder = new AlertDialog.Builder(StudentEditActivity.this);
 //                    builder.setMessage(s+"").show();
-                    Toast.makeText(StudentEditActivity.this, s+"", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(StudentEditActivity.this, s + "", Toast.LENGTH_SHORT).show();
 
 
                     //액티비티 종료
@@ -193,32 +183,34 @@ public class StudentEditActivity extends AppCompatActivity {
             }
         });
 
-    }
+    }// click complete end.
+
+
 
 
     public void clickDay(View v){
-        switch (v.getId()){
-            case R.id.tb_mon:
-                G.attday |= 0b00000001;
-                break;
-            case R.id.tb_tue:
-                G.attday |= 0b00000010;
-                break;
-            case R.id.tb_wed:
-                G.attday |= 0b00000100;
-                break;
-            case R.id.tb_thu:
-                G.attday |= 0b00001000;
-                break;
-            case R.id.tb_fri:
-                G.attday |= 0b00010000;
-                break;
-            case R.id.tb_sat:
-                G.attday |= 0b00100000;
-                break;
+        //필요없음
+//        switch (v.getId()){
+//            case R.id.tb_mon:
+//                G.attday |= 0b00000001;
+//                break;
+//            case R.id.tb_tue:
+//                G.attday |= 0b00000010;
+//                break;
+//            case R.id.tb_wed:
+//                G.attday |= 0b00000100;
+//                break;
+//            case R.id.tb_thu:
+//                G.attday |= 0b00001000;
+//                break;
+//            case R.id.tb_fri:
+//                G.attday |= 0b00010000;
+//                break;
+//            case R.id.tb_sat:
+//                G.attday |= 0b00100000;
+//                break;
+//
         }
-
-    }
 
 
 //    public void clickBtn(View view) {

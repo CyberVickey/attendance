@@ -59,8 +59,6 @@ public class AdapterAttendanceFragment extends RecyclerView.Adapter {
         return items.size();
     }
 
-
-}
     //이너클래스 : 아이템뷰 안의 참조변수를 뷰id 를 찾아서 넣어줌
 
     class VH extends RecyclerView.ViewHolder{
@@ -82,4 +80,7 @@ public class AdapterAttendanceFragment extends RecyclerView.Adapter {
 
         }
     }
+
+}
+
 

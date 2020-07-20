@@ -12,9 +12,6 @@ public class G {
     // Retrofit으로 받아올 객체의 arraylist
     public static ArrayList<StudentDTO> dtos = new ArrayList<>();
 
-    //학생 출석 요일
-    public static int attday =0;
-
     //로그인 데이터
     public static boolean isLogin = false;
     public static String nickName; // 프로필 이름
@@ -25,23 +22,31 @@ public class G {
     public static String msgOut = "";
     public static String sendMsg = "";
 
-    public static boolean[] parseIntDay(int day){
-        boolean[] checked = new boolean[6];
-        int num = day;
-        int mask = 0b00000001;
 
-        for(int i=1; i<7; i++){
-            num= num>>1;
-            int n = num & mask;
-            if(n==1) {
-                checked[i] = true;
-            } else {
-                checked[i] = false;
-            }
-            Log.i("aaa", checked[i]+"");
-        }
-        return checked;
-    }
+
+
+
+
+
+
+    //요일 파싱 메소드
+//    public static boolean[] parseIntDay(int day){
+//        boolean[] checked = new boolean[6];
+//        int num = day;
+//        int mask = 0b00000001;
+//
+//        for(int i=1; i<7; i++){
+//            num= num>>1;
+//            int n = num & mask;
+//            if(n==1) {
+//                checked[i] = true;
+//            } else {
+//                checked[i] = false;
+//            }
+//            Log.i("aaa", checked[i]+"");
+//        }
+//        return checked;
+//    }
 
 
 }
