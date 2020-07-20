@@ -36,11 +36,12 @@ public class AdapterLeavingStudentList extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
         if(convertView == null){ // if convertVeiw != 재활용
             convertView = inflater.inflate(R.layout.item_leftstulist, null);
         }
 
-        TextView name = convertView.findViewById(R.id.tv_stdListName);
+        TextView name = convertView.findViewById(R.id.leaving_name);
         TextView date = convertView.findViewById(R.id.leaving_date);
 
         //참조로 찾아와서 내용 set 해주기

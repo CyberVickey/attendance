@@ -97,7 +97,7 @@ public class FragmentSetting extends Fragment {
         linearLayout2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),NumberInputActivity.class);
+                Intent intent = new Intent(getActivity(),LeavingStudentActivity.class);
                 startActivity(intent);
 
 
