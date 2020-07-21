@@ -99,8 +99,6 @@ public class FragmentSetting extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),LeavingStudentActivity.class);
                 startActivity(intent);
-
-
             }
         });
 

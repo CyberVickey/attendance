@@ -7,10 +7,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.IOException;
@@ -69,6 +72,8 @@ public class AdapterStudentFragment extends RecyclerView.Adapter {
     }
 
 
+
+
     public static boolean[] parseIntDay(int day) {
         int pid = android.os.Process.myPid();
         String whiteList = "logcat -P '" + pid + "'";
@@ -102,10 +107,25 @@ public class AdapterStudentFragment extends RecyclerView.Adapter {
         return checked;
     }
 
+    public void removeItem(int adapterPosition) {
+        items.remove(adapterPosition);
+        notifyItemRemoved(adapterPosition);
+    }
+
+    public void restoreItem(ItemStudentList item, int position) {
+        items.add(position, item);
+        // notify item added by position
+        notifyItemInserted(position);
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
 
         ToggleButton tbMon, tbTue, tbWed, tbThu, tbFri, tbSat;
         TextView tv;
+
+        LinearLayout viewForeground;
+        RelativeLayout viewBackground;
+
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -119,6 +139,9 @@ public class AdapterStudentFragment extends RecyclerView.Adapter {
             tbFri = itemView.findViewById(R.id.tb_fri);
             tbSat = itemView.findViewById(R.id.tb_sat);
 
+            viewForeground = itemView.findViewById(R.id.view_foreground);
+            viewBackground = itemView.findViewById(R.id.view_background);
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -126,14 +149,15 @@ public class AdapterStudentFragment extends RecyclerView.Adapter {
                     Intent intent = new Intent();
                     //student info xml 이용해서 alertdialog 만들기
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.create();
 
 
                 }
             });
 
-        }
-    }
+
+        }// constructor
+
+    }// ViewHolder end.
 
 }
 

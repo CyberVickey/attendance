@@ -170,7 +170,6 @@ public class StudentEditActivity extends AppCompatActivity {
 //                    builder.setMessage(s+"").show();
                     Toast.makeText(StudentEditActivity.this, s + "", Toast.LENGTH_SHORT).show();
 
-
                     //액티비티 종료
                     finish();
                 }

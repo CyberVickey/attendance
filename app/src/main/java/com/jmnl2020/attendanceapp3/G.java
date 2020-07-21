@@ -26,9 +26,6 @@ public class G {
 
 
 
-
-
-
     //요일 파싱 메소드
 //    public static boolean[] parseIntDay(int day){
 //        boolean[] checked = new boolean[6];

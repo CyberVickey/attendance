@@ -27,10 +27,12 @@
 
         android:layout_gravity="bottom"
         app:menu="@menu/bottomnav_menu"
-        app:labelVisibilityMode="auto"
+        app:labelVisibilityMode="selected"
         app:itemBackground="@color/myColorLight"
-        app:itemIconTint="@color/myColorDeepdark"
-        app:itemTextColor="@color/myColorDeepdark"
+        app:itemIconTint="@drawable/bottom_navigation_selector"
+        app:itemTextColor="@drawable/bottom_navigation_selector"
+
+        app:itemHorizontalTranslationEnabled="true"
         />
 
 

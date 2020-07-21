@@ -10,13 +10,42 @@
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:background="#BDBDBD"
-        android:layout_below="@id/linlayout"/>
+        android:layout_below="@id/view_foreground"/>
+
+    <RelativeLayout
+        android:id="@+id/view_background"
+        android:layout_width="match_parent"
+        android:layout_height="79dp"
+        android:background="@color/design_default_color_error">
+
+        <ImageView
+            android:id="@+id/delete_icon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:src="@android:drawable/ic_menu_delete" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:layout_toLeftOf="@id/delete_icon"
+            android:text="삭제"
+            android:textColor="#fff"
+            android:textSize="13dp" />
+
+    </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/linlayout"
-        android:layout_width="wrap_content"
+        android:id="@+id/view_foreground"
+        android:layout_width="match_parent"
         android:layout_height="79dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#FFFFFFFF"
+        >
 
         <TextView
             android:id="@+id/tv_stdListName"
@@ -130,6 +159,7 @@
             android:layout_toRightOf="@+id/tb_fri"
             android:layout_marginTop="22dp"
             android:layout_marginLeft="12dp"
+            android:layout_marginRight="30dp"
             android:layout_below="@+id/tv_nameInfo"
             />
 

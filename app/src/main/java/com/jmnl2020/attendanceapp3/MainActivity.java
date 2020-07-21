@@ -122,14 +122,14 @@ public class MainActivity extends AppCompatActivity {
 
                     //서버 데이터를 읽어와서 G 에 대입!
                     G.dtos.clear();
-
 //                    for(int i=0; i<response.body().size(); i++){
 
                     ArrayList<StudentDTO> items = response.body();
                     for(StudentDTO dto : items){
                         G.dtos.add(0, dto);
-                    }
 
+                    }
+                    //Toast.makeText(MainActivity.this, G.dtos.size()+"", Toast.LENGTH_SHORT).show();
 
 
                 }
