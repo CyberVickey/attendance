@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class G {
 
-    //학생들이 입력한 비밀번호(학생번호) 저장
-    public static int stuNum;
+    //출석한 학생 정보
+    public static StudentDTO student;
 
     // Retrofit으로 받아올 객체의 arraylist
     public static ArrayList<StudentDTO> dtos = new ArrayList<>();
@@ -16,13 +16,6 @@ public class G {
     public static boolean isLogin = false;
     public static String nickName; // 프로필 이름
     public static String profileUrl; //프로필 이미지의 uri
-
-    //메세지 보낼 문구
-    public static String msgIn = "";
-    public static String msgOut = "";
-    public static String sendMsg = "";
-
-
 
 
 

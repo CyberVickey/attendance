@@ -125,7 +125,7 @@ public class FragmentStudent extends Fragment {
     public void onResume() {
         super.onResume();
 
-        Toast.makeText(getActivity(), "fragment Student onResume", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(), "fragment Student onResume", Toast.LENGTH_SHORT).show();
 
         items.clear();
 

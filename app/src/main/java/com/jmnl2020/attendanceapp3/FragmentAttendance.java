@@ -27,6 +27,7 @@ import java.util.Date;
 public class FragmentAttendance extends Fragment {
 
     TextView tv_date;
+    TextView tv_totalStd;
     String date;
 
     //////////////////////리사이클러뷰 ////////////////////////////////
@@ -43,7 +44,7 @@ public class FragmentAttendance extends Fragment {
         long now = System.currentTimeMillis();
         Date mDate = new Date(now);
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH시 mm분 ss초");
         String getTime = simpleDateFormat.format(mDate);
 
         StringBuffer timeBuffer = new StringBuffer();
@@ -60,7 +61,7 @@ public class FragmentAttendance extends Fragment {
 
         //아이템 추가
         for(int i=0; i<G.dtos.size(); i++){
-            recyclerviewItems.add(new ItemAttendanceList(G.dtos.get(i).name, getTime+""));
+            recyclerviewItems.add(new ItemAttendanceList(G.dtos.get(i).name, getTime));
         }
 
 //        recyclerviewItems.add(new ItemAttendanceList("김학생", getTime+""));
@@ -72,6 +73,14 @@ public class FragmentAttendance extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_attendance, container, false);
+
+        //재원생수
+        tv_totalStd = view.findViewById(R.id.tv_totalstd);
+        StringBuffer stuBuffer = new StringBuffer();
+        stuBuffer.append("재원생: ");
+        stuBuffer.append(G.dtos.size()+"");
+
+        tv_totalStd.setText(stuBuffer);
 
         //Fragment에 액션바 만들기 -> TextView
         tv_date = view.findViewById(R.id.tv_date);
@@ -88,4 +97,17 @@ public class FragmentAttendance extends Fragment {
     }
 
 
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//
+//        if (G.student != null) {
+//            for(int i=0; i<recyclerviewItems.size(); i++ ){
+//                if(G.student.name.equals(recyclerviewItems.get(i).stdName)){
+//                    recyclerviewItems.set(i,)
+//                }
+//            }
+//        }
+//
+//    }
 }

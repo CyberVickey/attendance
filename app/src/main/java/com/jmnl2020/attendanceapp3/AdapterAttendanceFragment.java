@@ -41,9 +41,16 @@ public class AdapterAttendanceFragment extends RecyclerView.Adapter {
         ItemAttendanceList item = items.get(position);
 
         vh.tv_name.setText(item.stdName);
-        vh.tv_time.setText(item.time);
         vh.tv_att.setText("");
         vh.tv_fin.setText("");
+
+        //학생이 출석했을때
+        if(G.student!=null && G.student.name == item.stdName){
+            vh.tv_time.setText(item.time);
+            vh.tv_att.setText("출석");
+            vh.tv_absent.setText("");
+        }else vh.tv_time.setText("");
+
 
         //출석을 하면
 //        vh.tv_att.setText("출석");

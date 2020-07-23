@@ -109,8 +109,6 @@ public class MainActivity extends AppCompatActivity {
     //서버에서 데이터를 불러들이는 작업 메소드
     void loadData(){
 
-
-
         Retrofit retrofit = RetrofitHelper.getInstance2();
         RetrofitService retrofitService = retrofit.create(RetrofitService.class);
         Call<ArrayList <StudentDTO>> call = retrofitService.loadData();
@@ -145,13 +143,4 @@ public class MainActivity extends AppCompatActivity {
 
     }//load Data end.
 
-
-    @Override
-    protected void onDestroy() {
-
-        Log.i("TAG", "main Destroy");
-
-        super.onDestroy();
-
-    }
 }

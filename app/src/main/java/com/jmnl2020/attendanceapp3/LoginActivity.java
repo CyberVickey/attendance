@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -33,12 +34,25 @@ import static com.kakao.util.helper.Utility.getPackageInfo;
 
 public class LoginActivity extends AppCompatActivity {
 
+    String sfName = "sfKey";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //동적 퍼미션
+
+
+//        SharedPreferences pref = getSharedPreferences(sfName, 0);
+//        SharedPreferences.Editor editor= pref.edit();
+//
+//        //SharedPreference 사용
+//        editor.putBoolean("login", false);
+//        editor.commit();
+
+        //자동 로그인 시키기 왜이렇게 어려워 ~~~~~~~~~~~~~~~~~~
         //로그인에 성공한 적이 있으면
         afterLoginSendNext();
 
@@ -62,6 +76,8 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onSessionOpened() {
             Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
+
+
             //로그인 된 사용자의 정보들 얻어오기
             requestUserInfo();
         }
@@ -85,7 +101,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onSuccess(MeV2Response result) {
 
                 //로그인에 성공!!
-                G.isLogin = true;
+                SharedPreferences pref = getSharedPreferences(sfName, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor= pref.edit();
+                editor.putBoolean("login", true);
+                editor.commit();
 
                 //사용자 정보객체 받아옴.
                 UserAccount userAccount = result.getKakaoAccount();
@@ -136,7 +155,9 @@ public class LoginActivity extends AppCompatActivity {
     //로그인 성공시 MainActivity로 넘겨주는 메소드
     public void afterLoginSendNext(){
 
-        if (G.isLogin == true){
+        SharedPreferences pref = getSharedPreferences(sfName, 0);
+
+        if (G.isLogin == true || pref.getBoolean(sfName, false) == true ){
             Intent intent = new Intent(this, SelectionActivity.class);
             startActivity(intent);
         }else return;

@@ -5,19 +5,20 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class NumberInputActivity extends AppCompatActivity {
 
@@ -43,7 +44,6 @@ public class NumberInputActivity extends AppCompatActivity {
 
         tableLayout = findViewById(R.id.tableLayout);
         tv_stuNum = findViewById(R.id.tv_stunum);
-
 
 //        tv_num1 = findViewById(R.id.tv_num1);
 //        tv_num2 = findViewById(R.id.tv_num2);
@@ -147,58 +147,52 @@ public class NumberInputActivity extends AppCompatActivity {
 
 //        tv_stuNum.setText(buffer); 동작 테스트 확인
 
-        //G stunum에 buffer로 받은 숫자 입력
-        G.stuNum = Integer.parseInt(buffer.toString());
+        //G stunum에 buffer로 받은 숫자 입력 : 이용자가 적은 출석번호 = stuNum
+        String stuNum = buffer.toString();
+
+        //SharedPreference 사용해서 미리 적어둔 메세지 가져와 사용하기!
+        SharedPreferences sf = this.getSharedPreferences("autoMsg", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor;
+
+        boolean in = false;
+        for(int i=0; i<G.dtos.size(); i++){
+            if (stuNum.equals(G.dtos.get(i).contact) ){
+                Toast.makeText(this, "====== 출석 완료!======", Toast.LENGTH_SHORT).show();
+                in = true;
+                G.student = G.dtos.get(i);
+
+                tvs[0].setText("");
+                tvs[1].setText("");
+                tvs[2].setText("");
+                tvs[3].setText("");
+
+                SendMsg sendMsg = new SendMsg(this);
+                sendMsg.sendMsgTo(G.student.par1phone, sf.getString("MsgIn", G.student.name+" 학생이 출석했습니다."));
+                sendMsg.sendMsgTo(G.student.par2phone, sf.getString("MsgIn", G.student.name+" 학생이 출석했습니다."));
+
+            }
+
+        }
+        if (in==false) Toast.makeText(this, "출석번호가 옳은지 확인해주세요.", Toast.LENGTH_SHORT).show();
 
     }
 
+    public class SendMsg{
 
-// ---------------------수정된 코드 -----------------------
-//    public void clickNum(View view) {
-//        //현재 클릭한 버튼
-//        //v.getId()를 하게 되면 사용자가 누른 버튼의 아이디가 들어간다.
-//        // 따라서 Button btnClicked는 항상 사용자가 누른 버튼을 의미한다.
-//
-//        Button btnClicked = findViewById(view.getId());
-//
-//        TextView inputtv;
-//
-//        if(tv_num1.getText() == ""){
-//            inputtv = tv_num1;
-//        }else if(tv_num2.getText() == ""){
-//            inputtv = tv_num2;
-//        }else if(tv_num3.getText() == ""){
-//            inputtv = tv_num3;
-//        }else if(tv_num4.getText() == ""){
-//            inputtv = tv_num4;
-//        }else{
-//            tv_num1.setText("");
-//            tv_num2.setText("");
-//            tv_num3.setText("");
-//            tv_num4.setText("");
-//
-//            inputtv = tv_num1;
-//
-//            //텍스트뷰의 빈칸을 찾아내는 코드 -> cnt 변수를 만들어서 현재 위치를 저장
-//
-//        }
-//
-//
-//        switch (btnClicked.getId()){
-//            case R.id.btn00: inputtv.setText("0");
-//            case R.id.btn01: inputtv.setText("1");
-//            case R.id.btn02: inputtv.setText("2");
-//            case R.id.btn03: inputtv.setText("3");
-//            case R.id.btn04: inputtv.setText("4");
-//            case R.id.btn05: inputtv.setText("5");
-//            case R.id.btn06: inputtv.setText("6");
-//            case R.id.btn07: inputtv.setText("7");
-//            case R.id.btn08: inputtv.setText("8");
-//            case R.id.btn09: inputtv.setText("9");
-//
-//        } ***이렇게 만들 필요 없음! 이미 위에서 num 값을 찾아두었기 때문에 대입하기만 하면 끝!
-//
-//    }
+        private Context context;
+        public SendMsg(Context context){
+            this.context = context;
+        }
+
+        public void sendMsgTo(String phoneNum, String msg){
+
+            SmsManager manager = SmsManager.getDefault();
+            manager.sendTextMessage(phoneNum, null, msg, null, null);
+            Toast.makeText(context, "메세지 전송을 완료했습니다.", Toast.LENGTH_SHORT).show();
+
+        }
+
+    }
 
 
 }

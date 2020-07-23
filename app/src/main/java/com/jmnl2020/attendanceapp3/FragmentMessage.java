@@ -3,6 +3,7 @@ package com.jmnl2020.attendanceapp3;
 import android.app.Instrumentation;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -72,15 +73,27 @@ public class FragmentMessage extends Fragment {
         adapter.notifyDataSetChanged();
         Log.i("load","onCreateView");
 
+        String sfName = "sfKey";
+        SharedPreferences pref = getActivity().getSharedPreferences(sfName, Context.MODE_PRIVATE);
+
         //fab
         fab = view.findViewById(R.id.fab_msg);
         fab.bringToFront();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setData(ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
-                startActivityForResult(intent, 100);
+
+                String contactList = "sms:";
+                Uri smsUri = Uri.parse(contactList);
+
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.putExtra("sms_body",  pref.getString("sendMsg", ""));
+                startActivity(intent);
+
+
+//                Intent intent = new Intent(Intent.ACTION_PICK);
+//                intent.setData(ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
+//                startActivityForResult(intent, 100);
 
 //                sendSMS(data, G.sendMsg);
             }
@@ -90,33 +103,34 @@ public class FragmentMessage extends Fragment {
         return view;
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(requestCode == RESULT_OK){
-            sendSMS(data, G.sendMsg);
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        if(requestCode == RESULT_OK){
+//            //공지로 보낼 메세지
+// //           sendSMS(data, G.sendMsg);
+//        }
+//        super.onActivityResult(requestCode, resultCode, data);
+//    }
 
-    private void sendSMS(Intent data,String msg){
-        Cursor cursor = getActivity().getContentResolver().query(data.getData(),
-                new String[]{ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
-                ContactsContract.CommonDataKinds.Phone.NUMBER}, null, null, null);
-
-        cursor.moveToFirst();
-        String name = cursor.getString(0); //0은 이름을 얻어옴!
-        String number = cursor.getString(1); // 1은 번호를 받아옴!
-
-        cursor.close();
-
-        //((TextView) getView().findViewById(R.id.resMsg)).setText("name : "+ name +"/  number: "+number);
-
-        Uri n = Uri.parse("smsto: "+ number);
-        Intent intent = new Intent(Intent.ACTION_SENDTO, n);
-        intent.putExtra("sms_body", msg);
-        startActivity(intent);
-
-    }
+//    private void sendSMS(Intent data,String msg){
+//        Cursor cursor = getActivity().getContentResolver().query(data.getData(),
+//                new String[]{ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+//                ContactsContract.CommonDataKinds.Phone.NUMBER}, null, null, null);
+//
+//        cursor.moveToFirst();
+//        String name = cursor.getString(0); //0은 이름을 얻어옴!
+//        String number = cursor.getString(1); // 1은 번호를 받아옴!
+//
+//        cursor.close();
+//
+//        //((TextView) getView().findViewById(R.id.resMsg)).setText("name : "+ name +"/  number: "+number);
+//
+//        Uri n = Uri.parse("smsto: "+ number);
+//        Intent intent = new Intent(Intent.ACTION_SENDTO, n);
+//        intent.putExtra("sms_body", msg);
+//        startActivity(intent);
+//
+//    }
 
 
 }
