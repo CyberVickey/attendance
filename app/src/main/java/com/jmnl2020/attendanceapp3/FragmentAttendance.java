@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,18 +26,14 @@ import java.util.Date;
 
 public class FragmentAttendance extends Fragment {
 
-    Context context;
-
+    TextView tv_date;
+    String date;
 
     //////////////////////리사이클러뷰 ////////////////////////////////
     //Item (Cardview) 안에 입력할 대량의 데이터 임의생성
     ArrayList<ItemAttendanceList> recyclerviewItems = new ArrayList<>();
     RecyclerView recyclerView;
     AdapterAttendanceFragment attendanceAdapter;
-
-    public FragmentAttendance(Context context) {
-        this.context = context;
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,9 +52,19 @@ public class FragmentAttendance extends Fragment {
 //        timeBuffer.append(" ~ ");
         // 끝나는 시간 append 시켜주기
 
+
+        //오늘의 날짜 가져오기
+        SimpleDateFormat format = new SimpleDateFormat("MM월 dd일");
+        date = format.format(mDate);
+
+
         //아이템 추가
-        recyclerviewItems.add(new ItemAttendanceList("김학생", getTime+""));
-        recyclerviewItems.add(new ItemAttendanceList("전학생", getTime+""));
+        for(int i=0; i<G.dtos.size(); i++){
+            recyclerviewItems.add(new ItemAttendanceList(G.dtos.get(i).name, getTime+""));
+        }
+
+//        recyclerviewItems.add(new ItemAttendanceList("김학생", getTime+""));
+//        recyclerviewItems.add(new ItemAttendanceList("전학생", getTime+""));
 
     }
 
@@ -67,10 +74,12 @@ public class FragmentAttendance extends Fragment {
         View view = inflater.inflate(R.layout.fragment_attendance, container, false);
 
         //Fragment에 액션바 만들기 -> TextView
+        tv_date = view.findViewById(R.id.tv_date);
+        tv_date.setText(date+"");
 
         //fragment와 연결된 xml 파일을 여기서 inflate
 
-        attendanceAdapter = new AdapterAttendanceFragment(context, recyclerviewItems);
+        attendanceAdapter = new AdapterAttendanceFragment(getActivity(), recyclerviewItems);
         recyclerView = view.findViewById(R.id.recyclerview_frg2);
         recyclerView.setAdapter(attendanceAdapter);
 

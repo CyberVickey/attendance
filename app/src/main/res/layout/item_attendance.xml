@@ -67,12 +67,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="결석"
+            android:text="미등원"
             android:textStyle="bold"
             android:textColor="#D1281B"
             android:textSize="18sp"
             android:layout_toLeftOf="@+id/tv_attendance"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="16dp"
             android:layout_centerVertical="true"
             />
 

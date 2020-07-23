@@ -14,6 +14,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
@@ -31,6 +32,7 @@ import java.security.NoSuchAlgorithmException;
 import static com.kakao.util.helper.Utility.getPackageInfo;
 
 public class LoginActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,8 +94,8 @@ public class LoginActivity extends AppCompatActivity {
                 Profile profile = userAccount.getProfile();
                 if(profile == null ) return;
 
-                String nickName = profile.getNickname();
-                String imgUrl = profile.getProfileImageUrl();
+                G.nickName = profile.getNickname();
+                G.profileUrl = profile.getProfileImageUrl();
                 String thumbnailImgUrl = profile.getThumbnailImageUrl();
 
                 //받아온 정보를 MainActivity - Setting fragment 로 전달.

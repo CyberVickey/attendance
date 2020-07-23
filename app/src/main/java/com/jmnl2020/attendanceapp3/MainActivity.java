@@ -2,15 +2,25 @@ package com.jmnl2020.attendanceapp3;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     FragmentManager fragmentManager;
     Fragment[] fragments = new Fragment[5];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
 
         //각 탭 화면의 프래그먼트 생성
         fragments[0] = new FragmentCalendar();
-        fragments[1] = new FragmentAttendance(this);
-        fragments[2] = new FragmentMessage(this);
-        fragments[3] = new FragmentStudent(this);
+        fragments[1] = new FragmentAttendance();
+        fragments[2] = new FragmentMessage();
+        fragments[3] = new FragmentStudent();
         fragments[4] = new FragmentSetting();
 
         //제일 처음 띄워줄 뷰 세팅
@@ -82,6 +93,65 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
+    }//onCreate end.
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        //서버에서 데이터를 읽어오기
+        loadData();
+
+    }
+
+    //서버에서 데이터를 불러들이는 작업 메소드
+    void loadData(){
+
+
+
+        Retrofit retrofit = RetrofitHelper.getInstance2();
+        RetrofitService retrofitService = retrofit.create(RetrofitService.class);
+        Call<ArrayList <StudentDTO>> call = retrofitService.loadData();
+
+        call.enqueue(new Callback<ArrayList<StudentDTO>>() {
+            @Override
+            public void onResponse(Call<ArrayList<StudentDTO>> call, Response<ArrayList<StudentDTO>> response) {
+                if(response.isSuccessful()){
+
+                    //서버 데이터를 읽어와서 G 에 대입!
+                    G.dtos.clear();
+
+//                    for(int i=0; i<response.body().size(); i++){
+
+                    ArrayList<StudentDTO> items = response.body();
+                    for(StudentDTO dto : items){
+                        G.dtos.add(0, dto);
+                    }
+
+
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<StudentDTO>> call, Throwable t) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage(t.getMessage()).show();
+
+            }
+        });
+
+    }//load Data end.
+
+
+    @Override
+    protected void onDestroy() {
+
+        Log.i("TAG", "main Destroy");
+
+        super.onDestroy();
 
     }
 }

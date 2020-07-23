@@ -1,14 +1,21 @@
 package com.jmnl2020.attendanceapp3;
 
+import android.app.Instrumentation;
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,13 +26,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class FragmentMessage extends Fragment {
+import static android.app.Activity.RESULT_OK;
 
-    Context context;
+public class FragmentMessage extends Fragment {
 
     ListView listView;
     ArrayList<ItemMessageFragment> listItem = new ArrayList<>();
-    AdapterMessageFragment adapter = new AdapterMessageFragment();;
+    AdapterMessageFragment adapter = new AdapterMessageFragment(listItem);
 
     //전체선택 가능하게 만들어주자
     boolean checkbox = false;
@@ -33,18 +40,19 @@ public class FragmentMessage extends Fragment {
     //click msg fab
     FloatingActionButton fab;
 
-
-    public FragmentMessage(Context context) {
-        this.context = context;
-    }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        adapter.addItem("김학생");
-        adapter.addItem("이학생");
-        adapter.addItem("박학생");
+//        ArrayList<String> names = new ArrayList<>();
+//
+//        for(int i=0; i<G.dtos.size(); i++){
+//            names.set(i, G.dtos.get(i).name);
+//            adapter.notifyDataSetChanged();
+//        }
+
+        Log.i("load","onCreate");
+
 
 
     }
@@ -57,24 +65,62 @@ public class FragmentMessage extends Fragment {
         listView = view.findViewById(R.id.listview_msgfg);
         listView.setAdapter(adapter);
 
+        listItem.clear();
+        for(int i = 0; i<G.dtos.size(); i++){
+            listItem.add(new ItemMessageFragment(G.dtos.get(i).name.toString()));
+        }Log.i("load","done for");
+        adapter.notifyDataSetChanged();
+        Log.i("load","onCreateView");
+
         //fab
         fab = view.findViewById(R.id.fab_msg);
-        fab.bringToFront();;
+        fab.bringToFront();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("tag", "click fab");
-                Toast.makeText(context, "click fab", Toast.LENGTH_SHORT).show();
-            }
-        });
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setData(ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
+                startActivityForResult(intent, 100);
 
+//                sendSMS(data, G.sendMsg);
+            }
+
+        });
 
         return view;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == RESULT_OK){
+            sendSMS(data, G.sendMsg);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void sendSMS(Intent data,String msg){
+        Cursor cursor = getActivity().getContentResolver().query(data.getData(),
+                new String[]{ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+                ContactsContract.CommonDataKinds.Phone.NUMBER}, null, null, null);
+
+        cursor.moveToFirst();
+        String name = cursor.getString(0); //0은 이름을 얻어옴!
+        String number = cursor.getString(1); // 1은 번호를 받아옴!
+
+        cursor.close();
+
+        //((TextView) getView().findViewById(R.id.resMsg)).setText("name : "+ name +"/  number: "+number);
+
+        Uri n = Uri.parse("smsto: "+ number);
+        Intent intent = new Intent(Intent.ACTION_SENDTO, n);
+        intent.putExtra("sms_body", msg);
+        startActivity(intent);
+
+    }
 
 
 }
+
 
 
 

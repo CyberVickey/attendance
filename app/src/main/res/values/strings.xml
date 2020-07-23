@@ -7,4 +7,13 @@
     <string name="fragment3">단체 문자</string>
     <string name="fragment4">학생 관리</string>
     <string name="fragment5">설정</string>
+    <string name="material_calendar_monday">월</string>
+    <string name="material_calendar_tuesday">화</string>
+    <string name="material_calendar_wednesday">수</string>
+    <string name="material_calendar_thursday">목</string>
+    <string name="material_calendar_friday">금</string>
+    <string name="material_calendar_saturday">토</string>
+    <string name="material_calendar_sunday">일</string>
+
+    <string name="autoMessage_att">학생이 학원에 도착했습니다.</string>
 </resources>

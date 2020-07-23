@@ -18,6 +18,10 @@ public class AdapterMessageFragment extends BaseAdapter {
 
     }
 
+    public AdapterMessageFragment(ArrayList<ItemMessageFragment> items) {
+        this.items = items;
+    }
+
     @Override
     public int getCount() {
         //1.
@@ -46,20 +50,24 @@ public class AdapterMessageFragment extends BaseAdapter {
             convertView = inflater.inflate(R.layout.item_message, parent, false);
         }
 
+        ItemMessageFragment item = items.get(pos);
+
         //화면에 표시될 View (Layout이 inflate된 뷰) 로부터 위젯에 대한 참조 획득
         TextView tv = convertView.findViewById(R.id.tv_nameMsg);
+
+        tv.setText(item.name);
 
         return convertView;
     }
 
      //아이템 데이터 추가를 위한 함수
-    public void addItem(String name){
-        ItemMessageFragment listItem = new ItemMessageFragment();
-
-        listItem.setName(name);
-
-        items.add(listItem);
-
-    }
+//    public void addItem(String name){
+//        ItemMessageFragment listItem = new ItemMessageFragment();
+//
+//        listItem.setName(name);
+//
+//        items.add(listItem);
+//
+//    }
 
 }
