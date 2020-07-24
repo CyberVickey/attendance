@@ -48,4 +48,6 @@ public class LeavingStudentActivity extends AppCompatActivity {
         //2. 학생 데이터 받아서 items에 넣기
 
     }
+
+
 }

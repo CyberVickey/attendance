@@ -43,13 +43,14 @@ public class AdapterAttendanceFragment extends RecyclerView.Adapter {
         vh.tv_name.setText(item.stdName);
         vh.tv_att.setText("");
         vh.tv_fin.setText("");
+        vh.tv_time.setText("");
 
         //학생이 출석했을때
-        if(G.student!=null && G.student.name == item.stdName){
-            vh.tv_time.setText(item.time);
-            vh.tv_att.setText("출석");
-            vh.tv_absent.setText("");
-        }else vh.tv_time.setText("");
+//        if(G.student!=null && G.student.name == item.stdName){
+//            vh.tv_time.setText(item.time);
+//            vh.tv_att.setText("출석");
+//            vh.tv_absent.setText("");
+//        }else vh.tv_time.setText("");
 
 
         //출석을 하면
@@ -76,7 +77,7 @@ public class AdapterAttendanceFragment extends RecyclerView.Adapter {
         TextView tv_absent;
         TextView tv_fin;
 
-        public VH(@NonNull View itemView) {
+        public VH(@NonNull View itemView) {             
             super(itemView);
 
             tv_name = itemView.findViewById(R.id.tv_stdName);

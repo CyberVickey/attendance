@@ -42,13 +42,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //동적 퍼미션
+        //자동로그인
+        SharedPreferences pref = getSharedPreferences(sfName, MODE_PRIVATE);
+        SharedPreferences.Editor editor= pref.edit();
 
-
-//        SharedPreferences pref = getSharedPreferences(sfName, 0);
-//        SharedPreferences.Editor editor= pref.edit();
-//
-//        //SharedPreference 사용
+        //SharedPreference 사용
 //        editor.putBoolean("login", false);
 //        editor.commit();
 
@@ -68,7 +66,9 @@ public class LoginActivity extends AppCompatActivity {
         //그 웹페이지의 로그인 응답결과를 받기위한 세션(카카오와 연결하는 통로)을 연결
         Session.getCurrentSession().addCallback(sessionCallback);
 
-    }
+    } //onCreate end.
+
+
 
 
     //카카오 로그인 서버와 연결을 시도하는 세션작업의 결과를 듣는 리스너
@@ -76,7 +76,6 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onSessionOpened() {
             Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
-
 
             //로그인 된 사용자의 정보들 얻어오기
             requestUserInfo();
@@ -99,12 +98,15 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(MeV2Response result) {
+                Log.i("login", "onSuccess");
 
                 //로그인에 성공!!
                 SharedPreferences pref = getSharedPreferences(sfName, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor= pref.edit();
                 editor.putBoolean("login", true);
                 editor.commit();
+
+                Log.i("login", "SharedPreference 로그인 기록 저장");
 
                 //사용자 정보객체 받아옴.
                 UserAccount userAccount = result.getKakaoAccount();
@@ -116,6 +118,8 @@ public class LoginActivity extends AppCompatActivity {
                 G.nickName = profile.getNickname();
                 G.profileUrl = profile.getProfileImageUrl();
                 String thumbnailImgUrl = profile.getThumbnailImageUrl();
+
+                Log.i("login", "사용자 객체 받아옴");
 
                 //받아온 정보를 MainActivity - Setting fragment 로 전달.
                 // -> G 클래스를 이용해서 모든 Activity 에서 정보 사용할 수 있도록 쉐어
@@ -155,9 +159,12 @@ public class LoginActivity extends AppCompatActivity {
     //로그인 성공시 MainActivity로 넘겨주는 메소드
     public void afterLoginSendNext(){
 
+        Log.i("login", "afterLogin 메소드");
+
         SharedPreferences pref = getSharedPreferences(sfName, 0);
 
-        if (G.isLogin == true || pref.getBoolean(sfName, false) == true ){
+        if (G.isLogin == true || pref.getBoolean("login", true) == true ){
+            Log.i("login", "인텐트 실행");
             Intent intent = new Intent(this, SelectionActivity.class);
             startActivity(intent);
         }else return;

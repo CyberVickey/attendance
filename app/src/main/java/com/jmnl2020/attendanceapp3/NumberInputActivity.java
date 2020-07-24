@@ -157,7 +157,7 @@ public class NumberInputActivity extends AppCompatActivity {
         boolean in = false;
         for(int i=0; i<G.dtos.size(); i++){
             if (stuNum.equals(G.dtos.get(i).contact) ){
-                Toast.makeText(this, "====== 출석 완료!======", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "** "+G.dtos.get(i).name + " 출석 완료! **", Toast.LENGTH_SHORT).show();
                 in = true;
                 G.student = G.dtos.get(i);
 
@@ -166,9 +166,9 @@ public class NumberInputActivity extends AppCompatActivity {
                 tvs[2].setText("");
                 tvs[3].setText("");
 
-                SendMsg sendMsg = new SendMsg(this);
-                sendMsg.sendMsgTo(G.student.par1phone, sf.getString("MsgIn", G.student.name+" 학생이 출석했습니다."));
-                sendMsg.sendMsgTo(G.student.par2phone, sf.getString("MsgIn", G.student.name+" 학생이 출석했습니다."));
+//                SendMsg sendMsg = new SendMsg(this);
+//                sendMsg.sendMsgTo(G.student.par1phone, sf.getString("MsgIn", G.student.name+" 학생이 출석했습니다."));
+//                sendMsg.sendMsgTo(G.student.par2phone, sf.getString("MsgIn", G.student.name+" 학생이 출석했습니다."));
 
             }
 
@@ -186,9 +186,9 @@ public class NumberInputActivity extends AppCompatActivity {
 
         public void sendMsgTo(String phoneNum, String msg){
 
-            SmsManager manager = SmsManager.getDefault();
-            manager.sendTextMessage(phoneNum, null, msg, null, null);
-            Toast.makeText(context, "메세지 전송을 완료했습니다.", Toast.LENGTH_SHORT).show();
+//            SmsManager manager = SmsManager.getDefault();
+//            manager.sendTextMessage(phoneNum, null, msg, null, null);
+//            Toast.makeText(context, "메세지 전송을 완료했습니다.", Toast.LENGTH_SHORT).show();
 
         }
 

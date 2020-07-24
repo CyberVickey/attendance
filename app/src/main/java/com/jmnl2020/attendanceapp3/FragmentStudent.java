@@ -46,7 +46,7 @@ public class FragmentStudent extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_student, container, false);
 
-        //버튼테스트트
+        //버튼테스트
 //       Button btn = view.findViewById(R.id.clickTest);
 //        btn.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -84,7 +84,7 @@ public class FragmentStudent extends Fragment {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
-                String name = items.get(viewHolder.getAdapterPosition()).studentName;
+                String name = items.get(viewHolder.getAdapterPosition()).name;
 
                 final ItemStudentList deletedItem = items.get(viewHolder.getAdapterPosition());
                 final int deleteIndex = viewHolder.getAdapterPosition();
@@ -132,7 +132,9 @@ public class FragmentStudent extends Fragment {
         adapter.notifyDataSetChanged();
 
         for(int i = 0; i<G.dtos.size(); i++){
-            items.add(new ItemStudentList(G.dtos.get(i).name));
+            items.add(new ItemStudentList(G.dtos.get(i).name, G.dtos.get(i).birthday,
+                    G.dtos.get(i).contact, G.dtos.get(i).par1name, G.dtos.get(i).par1phone,
+                    G.dtos.get(i).par2name, G.dtos.get(i).par2phone));
             adapter.notifyItemInserted(items.size()-1);
         }
 

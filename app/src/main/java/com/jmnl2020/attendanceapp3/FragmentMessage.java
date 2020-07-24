@@ -68,7 +68,7 @@ public class FragmentMessage extends Fragment {
 
         listItem.clear();
         for(int i = 0; i<G.dtos.size(); i++){
-            listItem.add(new ItemMessageFragment(G.dtos.get(i).name.toString()));
+            listItem.add(new ItemMessageFragment(G.dtos.get(i).name.toString(), G.dtos.get(i).par1phone, G.dtos.get(i).par1phone));
         }Log.i("load","done for");
         adapter.notifyDataSetChanged();
         Log.i("load","onCreateView");
@@ -83,11 +83,12 @@ public class FragmentMessage extends Fragment {
             @Override
             public void onClick(View v) {
 
-                String contactList = "sms:";
-                Uri smsUri = Uri.parse(contactList);
+                String sendingMsgList = "01022223333";
 
-                Intent intent = new Intent(Intent.ACTION_SENDTO);
-                intent.putExtra("sms_body",  pref.getString("sendMsg", ""));
+                Uri msgList = Uri.parse("smsto:"+sendingMsgList);
+
+                Intent intent = new Intent(Intent.ACTION_SENDTO, msgList);
+                intent.putExtra("sms_body",  pref.getString("sendMsg", "금일 호우주의보로 인해 수업이 취소되었습니다."));
                 startActivity(intent);
 
 

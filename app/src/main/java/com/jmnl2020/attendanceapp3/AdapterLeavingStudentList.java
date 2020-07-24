@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class AdapterLeavingStudentList extends BaseAdapter {
@@ -21,6 +22,39 @@ public class AdapterLeavingStudentList extends BaseAdapter {
     public int getCount() {
         //1. arraylist만큼 만들것
         return items.size();
+    }
+
+    public static boolean[] parseIntDay(int day) {
+        int pid = android.os.Process.myPid();
+        String whiteList = "logcat -P '" + pid + "'";
+        try {
+            Runtime.getRuntime().exec(whiteList).waitFor();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        boolean[] checked = new boolean[6];
+        int num = day;
+        int mask = 0b00000001;
+
+        for (int i = 0; i < 6; i++) {
+
+            int n = num & mask;
+            if (n == 1) {
+                checked[i] = true;
+
+            } else {
+                checked[i] = false;
+            }
+            num = num >> 1;
+//            Log.i("aaa", checked[i] + "");
+        }
+//        Log.i("aa", "한바퀴!");
+//        Log.i("aaa", day+"");
+
+        return checked;
     }
 
     @Override

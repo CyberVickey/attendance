@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -74,7 +75,21 @@ public class FragmentSetting extends Fragment {
         editor.putString("sendMsg", "");
         editor.commit();
 
+        //로그아웃버튼
+        Button btnLogout = view.findViewById(R.id.btn_logout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                editor.putBoolean(sfName, false);
+                editor.commit();
+
+                Toast.makeText(getActivity(), "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         String namee = "[이름]";
 
@@ -144,5 +159,7 @@ public class FragmentSetting extends Fragment {
         });
 
         return view;
-    }
+    }// createview end.
+
+
 }
