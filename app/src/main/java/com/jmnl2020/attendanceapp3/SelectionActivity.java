@@ -35,13 +35,13 @@ public class SelectionActivity extends AppCompatActivity {
             @Override
             public void onAdFailedToLoad(int i) {
                 super.onAdFailedToLoad(i);
-                Toast.makeText(SelectionActivity.this, "광고 로딩 실패", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(SelectionActivity.this, "광고 로딩 실패", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onAdLoaded() {
                 super.onAdLoaded();
-                Toast.makeText(SelectionActivity.this, "광고 로드 성공", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(SelectionActivity.this, "광고 로드 성공", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -51,7 +51,7 @@ public class SelectionActivity extends AppCompatActivity {
     public void clickAttendanceBtn(View view) {
 
         if(mInterstitialAd.isLoaded()) {
-            Toast.makeText(this, "광고", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "광고", Toast.LENGTH_SHORT).show();
             mInterstitialAd.show();
         }
 

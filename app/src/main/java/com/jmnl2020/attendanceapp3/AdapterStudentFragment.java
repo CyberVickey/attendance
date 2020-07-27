@@ -224,7 +224,7 @@ public class AdapterStudentFragment extends RecyclerView.Adapter {
 
                     if (check == false){
                         //학생이 휴학중이면 휴학생 목록에 add
-                        //어떻게... 그게 가능하지? fragment에서 열리지 않은 activity로 아이템전달...
+                        //fragment에서 열리지 않은 activity로 아이템전달...
                     }
 
                 }
