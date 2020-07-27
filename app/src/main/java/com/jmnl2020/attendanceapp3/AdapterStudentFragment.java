@@ -230,14 +230,16 @@ public class AdapterStudentFragment extends RecyclerView.Adapter {
                 }
             });
 
-            builder.setNeutralButton("확인", new DialogInterface.OnClickListener() {
+            //취소버튼
+            builder.setNeutralButton("취소", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
 
                 }
             });
 
-            builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+            //확인버튼
+            builder.setNegativeButton("확인", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
 
