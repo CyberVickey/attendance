@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:text="@string/fragment1"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:textColor="#FFFFFFFF"
+        android:background="@color/myColorDark"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="20dp"
+        />
+
+    <com.applandeo.materialcalendarview.CalendarView
+        android:id="@+id/calendarview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv_appbar"
+        android:layout_margin="12dp"
+        app:headerColor="@color/cardview_light_background"
+        app:headerLabelColor="@color/myColorDeepdark"
+        app:todayLabelColor="@color/myColorLemon"
+        />
+
+</RelativeLayout>

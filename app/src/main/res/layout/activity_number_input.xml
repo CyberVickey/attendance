@@ -4,11 +4,233 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:background="@color/cardview_dark_background"
+    android:background="@color/cardview_shadow_start_color"
     tools:context=".NumberInputActivity">
 
 
+    <TextView
+        android:id="@+id/tv_stunum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="학생 번호를 입력해주세요."
+
+        android:textSize="24sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"/>
+
+    <LinearLayout
+        android:layout_below="@+id/tv_stunum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_margin="16dp">
+
+        <TextView
+            android:id="@+id/tv_num1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+
+            android:background="@drawable/numbg"
+            android:layout_below="@+id/tv_stunum"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            android:layout_marginHorizontal="14dp"
+
+            android:textSize="30sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/tv_num2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/numbg"
+            android:layout_below="@+id/tv_stunum"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            android:layout_marginHorizontal="12dp"
+
+            android:textSize="30sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/tv_num3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/numbg"
+            android:layout_below="@+id/tv_stunum"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            android:layout_marginHorizontal="12dp"
+
+            android:textSize="30sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/tv_num4"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/numbg"
+            android:layout_below="@+id/tv_stunum"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            android:layout_marginHorizontal="12dp"
+
+            android:textSize="30sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv_stunum"
+        android:layout_above="@+id/viewFlipper"/>
+
+    <ViewFlipper
+        android:id="@+id/viewFlipper"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:id="@+id/firstViewFlipper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/cardview_light_background"
+            android:orientation="vertical">
+
+            <TableLayout
+                android:id="@+id/tableLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:stretchColumns="0,1,2"
+                >
+
+                <TableRow>
+                    <Button
+                        android:id="@+id/btn01"
+                        android:layout_height="100dp"
+                        android:background="@drawable/numberbg"
+                        android:textSize="30sp"
+                        android:onClick="clickNum"
+                        android:text="1"/>
+
+                    <Button
+                        android:id="@+id/btn02"
+                        android:layout_height="100dp"
+                        android:background="@drawable/numberbg"
+                        android:text="2"
+                        android:onClick="clickNum"
+                        android:textSize="30sp"/>
+
+                    <Button
+                        android:id="@+id/btn03"
+                        android:layout_height="100dp"
+                        android:background="@drawable/numberbg"
+                        android:text="3"
+                        android:onClick="clickNum"
+                        android:textSize="30sp"/>
+
+                </TableRow>
+
+                <TableRow>
+                    <Button
+                        android:id="@+id/btn04"
+                        android:layout_height="100dp"
+                        android:background="@drawable/numberbg"
+                        android:text="4"
+                        android:onClick="clickNum"
+                        android:textSize="30sp"/>
+
+                    <Button
+                        android:id="@+id/btn05"
+                        android:layout_height="100dp"
+                        android:background="@drawable/numberbg"
+                        android:text="5"
+                        android:onClick="clickNum"
+                        android:textSize="30sp"/>
+
+                    <Button
+                        android:id="@+id/btn06"
+                        android:layout_height="100dp"
+                        android:background="@drawable/numberbg"
+                        android:text="6"
+                        android:onClick="clickNum"
+                        android:textSize="30sp"/>
+
+                </TableRow>
+
+                <TableRow>
+
+                    <Button
+                        android:id="@+id/btn07"
+                        android:layout_height="100dp"
+                        android:background="@drawable/numberbg"
+                        android:text="7"
+                        android:onClick="clickNum"
+                        android:textSize="30sp"/>
+
+                    <Button
+                        android:id="@+id/btn08"
+                        android:layout_height="100dp"
+                        android:background="@drawable/numberbg"
+                        android:text="8"
+                        android:onClick="clickNum"
+                        android:textSize="30sp"/>
+
+                    <Button
+                        android:id="@+id/btn09"
+                        android:layout_height="100dp"
+                        android:background="@drawable/numberbg"
+                        android:text="9"
+                        android:onClick="clickNum"
+                        android:textSize="30sp"/>
+
+                </TableRow>
+
+                <TableRow>
+
+                    <ImageButton
+                        android:layout_height="100dp"
+                        android:background="@drawable/numberbg"
+                        android:src="@drawable/ic_backspace_black_32dp"
+                        android:onClick="clickCancel"
+                        />
+
+                    <Button
+                        android:id="@+id/btn00"
+                        android:layout_height="100dp"
+                        android:background="@drawable/numberbg"
+                        android:text="0"
+                        android:onClick="clickNum"
+                        android:textSize="30sp"/>
+
+                    <Button
+                        android:layout_height="100dp"
+                        android:background="@drawable/numberbg"
+                        android:text="확인"
+                        android:textSize="30sp"
+                        android:onClick="clickOK"/>
+
+                </TableRow>
+
+
+
+            </TableLayout>
+
+        </LinearLayout>
+
+    </ViewFlipper>
 
 <!--    <EditText-->
 <!--        android:layout_width="60dp"-->

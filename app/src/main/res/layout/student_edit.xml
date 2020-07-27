@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scrollView"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        >
+
+        <TextView
+        android:id="@+id/resister_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+
+        />
+
+        <TextView
+        android:id="@+id/tv_nameInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="#FF111111"
+        android:textSize="20sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="22dp"/>
+
+
+        <ToggleButton
+            android:id="@+id/tb_mon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/toggle_selector"
+            android:enabled="true"
+
+            android:textOn="월"
+            android:textOff="월"
+
+            android:textColor="#FF000000"
+            android:layout_below="@+id/tv_nameInfo"
+            android:layout_marginTop="22dp"
+            android:layout_marginLeft="20dp"
+            android:onClick="clickDay"
+        />
+
+        <ToggleButton
+        android:id="@+id/tb_tue"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/toggle_selector"
+        android:enabled="true"
+
+        android:textOn="화"
+        android:textOff="화"
+
+        android:textColor="#FF000000"
+        android:layout_toRightOf="@+id/tb_mon"
+        android:layout_below="@+id/tv_nameInfo"
+        android:layout_marginTop="22dp"
+        android:layout_marginLeft="12dp"
+        android:onClick="clickDay"
+        />
+
+        <ToggleButton
+        android:id="@+id/tb_wed"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/toggle_selector"
+        android:enabled="true"
+
+        android:textOn="수"
+        android:textOff="수"
+
+        android:textColor="#FF000000"
+        android:layout_toRightOf="@+id/tb_tue"
+        android:layout_marginTop="22dp"
+        android:layout_marginLeft="12dp"
+        android:layout_below="@+id/tv_nameInfo"
+        android:onClick="clickDay"
+        />
+
+        <ToggleButton
+        android:id="@+id/tb_thu"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/toggle_selector"
+        android:enabled="true"
+
+        android:textOn="목"
+        android:textOff="목"
+
+        android:textColor="#FF000000"
+        android:layout_toRightOf="@+id/tb_wed"
+        android:layout_marginTop="22dp"
+        android:layout_marginLeft="12dp"
+        android:layout_below="@+id/tv_nameInfo"
+        android:onClick="clickDay"
+        />
+
+        <ToggleButton
+        android:id="@+id/tb_fri"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/toggle_selector"
+        android:enabled="true"
+
+        android:textOn="금"
+        android:textOff="금"
+
+        android:textColor="#FF000000"
+        android:layout_toRightOf="@+id/tb_thu"
+        android:layout_marginTop="22dp"
+        android:layout_marginLeft="12dp"
+        android:layout_below="@+id/tv_nameInfo"
+        android:onClick="clickDay"
+        />
+
+        <ToggleButton
+        android:id="@+id/tb_sat"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/toggle_selector"
+        android:theme="@style/customTheme"
+        android:enabled="true"
+
+        android:textOn="토"
+        android:textOff="토"
+
+        android:textColor="#FF000000"
+        android:layout_toRightOf="@+id/tb_fri"
+        android:layout_marginTop="22dp"
+        android:layout_marginLeft="12dp"
+        android:layout_below="@+id/tv_nameInfo"
+        android:onClick="clickDay"
+        />
+
+        <LinearLayout
+            android:id="@+id/linlayoutEt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tb_fri"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_editbox"
+            android:layout_marginHorizontal="10dp"
+            android:padding="16dp"
+        >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이름"
+                android:textSize="18sp"
+                android:layout_marginVertical="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="생년월일"
+                android:textSize="18sp"
+                android:layout_marginVertical="40dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="출석 번호"
+                android:textSize="18sp"
+                android:layout_marginVertical="40dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="보호자1"
+                android:textSize="18sp"
+                android:layout_marginVertical="30dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="보호자2"
+                android:textSize="18sp"
+                android:layout_marginVertical="50dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="학생 이름"
+
+                android:background="@drawable/numbg"
+                android:inputType="text"
+                android:maxLines="1"
+                android:maxLength="10"
+                android:padding="8dp"
+                android:textSize="14sp"
+                android:cursorVisible="true"
+                android:layout_marginVertical="10dp"
+                />
+
+            <EditText
+                android:id="@+id/et_birthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="YYMMDD"
+
+                android:background="@drawable/numbg"
+                android:inputType="datetime"
+                android:maxLines="1"
+                android:maxLength="10"
+                android:padding="8dp"
+                android:textSize="14sp"
+                android:cursorVisible="true"
+                android:layout_marginVertical="30dp"
+                />
+
+            <EditText
+                android:id="@+id/et_contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="출석번호 ex)0000"
+
+                android:background="@drawable/numbg"
+                android:inputType="text"
+                android:maxLines="1"
+                android:maxLength="10"
+                android:padding="8dp"
+                android:textSize="14sp"
+                android:cursorVisible="true"
+                android:layout_marginVertical="30dp"
+                />
+
+            <EditText
+                android:id="@+id/et_name_prnts1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="보호자 이름"
+
+                android:background="@drawable/numbg"
+                android:inputType="text"
+                android:maxLines="1"
+                android:maxLength="10"
+                android:padding="8dp"
+                android:textSize="14sp"
+                android:cursorVisible="true"
+                android:layout_marginTop="30dp"
+                />
+
+            <EditText
+                android:id="@+id/et_num_prnts1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="연락처"
+
+                android:background="@drawable/numbg"
+                android:inputType="numberDecimal"
+                android:maxLength="20"
+                android:padding="8dp"
+                android:textSize="14sp"
+                android:cursorVisible="true"
+                android:layout_marginBottom="10dp"
+                />
+
+            <EditText
+                android:id="@+id/et_name_prnts2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="보호자 이름"
+
+                android:background="@drawable/numbg"
+                android:inputType="text"
+                android:maxLines="1"
+                android:maxLength="10"
+                android:padding="8dp"
+                android:textSize="14sp"
+                android:cursorVisible="true"
+                android:layout_marginTop="30dp"
+                />
+
+            <EditText
+                android:id="@+id/et_num_prnts2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="연락처"
+
+                android:background="@drawable/numbg"
+                android:inputType="number"
+                android:maxLength="20"
+                android:padding="8dp"
+                android:textSize="14sp"
+                android:cursorVisible="true"
+                android:layout_marginBottom="50dp"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="보호자 추가"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="등록"
+            android:layout_marginHorizontal="16dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/numbg"
+            android:layout_marginTop="12dp"
+            android:layout_below="@+id/linlayoutEt"
+            android:onClick="clickComplete"
+            />
+
+    </RelativeLayout>
+
+</ScrollView>

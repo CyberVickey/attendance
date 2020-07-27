@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    >
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="등록일 : 2020 / 07/ 10"-->
+<!--        android:layout_alignParentRight="true"-->
+
+<!--        />-->
+
+    <Button
+        android:id="@+id/btn_state"
+        android:layout_width="64dp"
+        android:layout_height="40dp"
+        android:text="재학"
+        android:background="@drawable/btnbg"
+        android:layout_alignParentRight="true"
+        android:textColor="#FFF"
+
+        android:layout_marginRight="26dp"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_nameInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="홍길동"
+        android:textColor="#FF111111"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/btn_state"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="22dp"/>
+
+
+<!--    <Button-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="재학"-->
+<!--        android:backgroundTint="#66BB6A"-->
+<!--        android:textColor="#FFF"-->
+<!--        android:layout_alignBaseline="@+id/tb_sat"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        />-->
+
+<!--    <ToggleButton-->
+<!--        android:id="@+id/tb_Mon"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:background="@drawable/toggle_selector"-->
+<!--        android:enabled="true"-->
+
+<!--        android:textOn="월"-->
+<!--        android:textOff="월"-->
+
+<!--        android:textColor="#FF000000"-->
+<!--        android:layout_below="@+id/tv_nameInfo"-->
+<!--        android:layout_marginTop="22dp"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        />-->
+
+<!--    <ToggleButton-->
+<!--        android:id="@+id/tb_Tue"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:background="@drawable/toggle_selector"-->
+<!--        android:enabled="true"-->
+
+<!--        android:textOn="화"-->
+<!--        android:textOff="화"-->
+
+<!--        android:textColor="#FF000000"-->
+<!--        android:layout_toRightOf="@+id/tb_Mon"-->
+<!--        android:layout_below="@+id/tv_nameInfo"-->
+<!--        android:layout_marginTop="22dp"-->
+<!--        android:layout_marginLeft="12dp"-->
+<!--        />-->
+
+<!--    <ToggleButton-->
+<!--        android:id="@+id/tb_Wed"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:background="@drawable/toggle_selector"-->
+<!--        android:enabled="true"-->
+
+<!--        android:textOn="수"-->
+<!--        android:textOff="수"-->
+
+<!--        android:textColor="#FF000000"-->
+<!--        android:layout_toRightOf="@+id/tb_Tue"-->
+<!--        android:layout_marginTop="22dp"-->
+<!--        android:layout_marginLeft="12dp"-->
+<!--        android:layout_below="@+id/tv_nameInfo"-->
+<!--        />-->
+
+<!--    <ToggleButton-->
+<!--        android:id="@+id/tb_Thu"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:background="@drawable/toggle_selector"-->
+<!--        android:enabled="true"-->
+
+<!--        android:textOn="목"-->
+<!--        android:textOff="목"-->
+
+<!--        android:textColor="#FF000000"-->
+<!--        android:layout_toRightOf="@+id/tb_Wed"-->
+<!--        android:layout_marginTop="22dp"-->
+<!--        android:layout_marginLeft="12dp"-->
+<!--        android:layout_below="@+id/tv_nameInfo"-->
+<!--        />-->
+
+<!--    <ToggleButton-->
+<!--        android:id="@+id/tb_Fri"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:background="@drawable/toggle_selector"-->
+<!--        android:enabled="true"-->
+
+<!--        android:textOn="금"-->
+<!--        android:textOff="금"-->
+
+<!--        android:textColor="#FF000000"-->
+<!--        android:layout_toRightOf="@+id/tb_Thu"-->
+<!--        android:layout_marginTop="22dp"-->
+<!--        android:layout_marginLeft="12dp"-->
+<!--        android:layout_below="@+id/tv_nameInfo"-->
+<!--        />-->
+
+<!--    <ToggleButton-->
+<!--        android:id="@+id/tb_Sat"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:background="@drawable/toggle_selector"-->
+<!--        android:theme="@style/customTheme"-->
+<!--        android:enabled="true"-->
+
+<!--        android:textOn="토"-->
+<!--        android:textOff="토"-->
+
+<!--        android:textColor="#FF000000"-->
+<!--        android:layout_toRightOf="@+id/tb_Fri"-->
+<!--        android:layout_marginTop="22dp"-->
+<!--        android:layout_marginLeft="12dp"-->
+<!--        android:layout_below="@+id/tv_nameInfo"-->
+<!--        />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_nameInfo"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_editbox"
+        android:layout_marginHorizontal="10dp"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="60dp"
+        >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이름"
+                android:layout_marginVertical="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="생년월일"
+                android:layout_marginVertical="20dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="학생번호"
+                android:layout_marginVertical="20dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="보호자1"
+                android:layout_marginVertical="20dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="보호자2"
+                android:layout_marginVertical="20dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_nameinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:text="홍길동" />
+
+            <TextView
+                android:id="@+id/tv_bthdayinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="20dp"
+                android:text="2020 / 02 / 02" />
+
+            <TextView
+                android:id="@+id/tv_contactinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="미등록"
+                android:layout_marginVertical="20dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_par1nameinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="아버지"
+                android:layout_marginTop="20dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_par1phoneinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="010-1234-5678"
+                />
+
+            <TextView
+                android:id="@+id/tv_par2nameinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="아버지"
+                android:layout_marginTop="20dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_par2phoneinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="010-1234-5678"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
