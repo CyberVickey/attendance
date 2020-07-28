@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 //        editor.putBoolean("login", false);
 //        editor.commit();
 
-        //자동 로그인 시키기 왜이렇게 어려워 ~~~~~~~~~~~~~~~~~~
+
         //로그인에 성공한 적이 있으면
         afterLoginSendNext();
 

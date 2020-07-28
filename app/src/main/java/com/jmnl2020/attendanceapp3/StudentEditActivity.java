@@ -151,13 +151,6 @@ public class StudentEditActivity extends AppCompatActivity {
         Call<String> call = retrofitService.postData(dataPart);
         Log.i("TAG", "Before enqueue"); //확인
 
-        //에러를 해결해보자
-//        OkHttpClient client = new OkHttpClient();
-//
-//        Gson gson = new GsonBuilder().setLenient().create();
-//
-//        Retrofit retrofit1 = new Retrofit.Builder().baseUrl("http://projectjm.dothome.co.kr")
-//                .client(client).addConverterFactory(GsonConverterFactory.create(gson)).build();
 
         call.enqueue(new Callback<String>() {
             @Override
@@ -185,6 +178,13 @@ public class StudentEditActivity extends AppCompatActivity {
     }// click complete end.
 
 
+    //에러를 해결해보자
+//        OkHttpClient client = new OkHttpClient();
+//
+//        Gson gson = new GsonBuilder().setLenient().create();
+//
+//        Retrofit retrofit1 = new Retrofit.Builder().baseUrl("http://projectjm.dothome.co.kr")
+//                .client(client).addConverterFactory(GsonConverterFactory.create(gson)).build();
 
 
     public void clickDay(View v){
