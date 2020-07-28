@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
-        android:src="@drawable/piano"
+        android:src="@drawable/introbackground"
         android:scaleType="centerCrop"/>
 
     <com.iambedant.text.OutlineTextView
@@ -22,9 +22,9 @@
         android:layout_marginTop="250dp"
         android:textFontWeight="700"
         android:fontFamily="@font/swagger"
-        android:textColor="#FFF"
-        app:outlineColor="#000"
-        app:outlineWidth="1.5"
+        android:textColor="#000"
+        app:outlineColor="#FFFFFF"
+        app:outlineWidth="1"
         />
 
 </RelativeLayout>

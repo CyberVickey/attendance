@@ -9,7 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class AdapterAttendanceFragment extends RecyclerView.Adapter {
 
@@ -35,30 +37,39 @@ public class AdapterAttendanceFragment extends RecyclerView.Adapter {
         return holder;
     }
 
+//    public String timeSet(){
+//        long now = System.currentTimeMillis();
+//        Date mDate = new Date(now);
+//
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH시 mm분 ss초");
+//        String getTime = simpleDateFormat.format(mDate);
+//
+//        //StringBuffer timeBuffer = new StringBuffer();
+//
+//        return getTime;
+//    }
+
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         VH vh = (VH)holder;
         ItemAttendanceList item = items.get(position);
+
+        //String time = timeSet();
 
         vh.tv_name.setText(item.stdName);
         vh.tv_att.setText("");
         vh.tv_fin.setText("");
         vh.tv_time.setText("");
 
-        //학생이 출석했을때
-//        if(G.student!=null && G.student.name == item.stdName){
-//            vh.tv_time.setText(item.time);
+//        if (item.isAttend == true){
 //            vh.tv_att.setText("출석");
 //            vh.tv_absent.setText("");
-//        }else vh.tv_time.setText("");
+//        } //작동 안됨~!!
+//
+//        if (item.isFinish == true){
+//            vh.tv_fin.setText("종료");
+//        }
 
-
-        //출석을 하면
-//        vh.tv_att.setText("출석");
-//        vh.tv_absent.setText("");
-
-        //수업이 끝나면
-//        vh.tv_fin.setText("종료");
 
     }
 

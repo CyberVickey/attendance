@@ -19,7 +19,7 @@
         android:paddingBottom="60dp"
         android:textSize="26sp"
         android:text="출석용"
-        android:onClick="clickAttandenceBtn"/>
+        android:onClick="clickAttendanceBtn"/>
 
 
     <Button

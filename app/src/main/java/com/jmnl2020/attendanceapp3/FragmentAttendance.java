@@ -36,6 +36,10 @@ public class FragmentAttendance extends Fragment {
     RecyclerView recyclerView;
     AdapterAttendanceFragment attendanceAdapter;
 
+    // 출석용 boolean 변수
+    boolean isAttend = false;
+    boolean isFinish = false;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,9 +63,10 @@ public class FragmentAttendance extends Fragment {
         date = format.format(mDate);
 
 
+        boolean isAttend = false;
         //아이템 추가
         for(int i=0; i<G.dtos.size(); i++){
-            recyclerviewItems.add(new ItemAttendanceList(G.dtos.get(i).name, getTime));
+            recyclerviewItems.add(new ItemAttendanceList(G.dtos.get(i).name, "", isAttend, isFinish));
         }
 
 //        recyclerviewItems.add(new ItemAttendanceList("김학생", getTime+""));
@@ -96,18 +101,45 @@ public class FragmentAttendance extends Fragment {
         return view;
     }
 
+        @Override
+    public void onResume() {
+        super.onResume();
 
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//
+            //cardview 추가시 현재 시간 가져오기
+            long now = System.currentTimeMillis();
+            Date mDate = new Date(now);
+
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH시 mm분 ss초");
+            String getTime = simpleDateFormat.format(mDate);
+
+            StringBuffer timeBuffer = new StringBuffer();
+
+//        timeBuffer.append(getTime);
+//        timeBuffer.append(" ~ ");
+            // 끝나는 시간 append 시켜주기
+
+
+            //오늘의 날짜 가져오기
+            SimpleDateFormat format = new SimpleDateFormat("MM월 dd일");
+            date = format.format(mDate);
+
+        //학생이 출석했을 때 -> boolean 변수를 만들어서 조절
+
 //        if (G.student != null) {
 //            for(int i=0; i<recyclerviewItems.size(); i++ ){
 //                if(G.student.name.equals(recyclerviewItems.get(i).stdName)){
-//                    recyclerviewItems.set(i,)
+//                    ItemAttendanceList temp = new ItemAttendanceList();
+//                    temp.stdName = G.student.name;
+//                    temp.time = getTime;
+//                    temp.isAttend = true;
+//                    recyclerviewItems.set(i, temp);
 //                }
 //            }
-//        }
-//
-//    }
-}
+//        } //작동 안됨............................................
+
+
+    }// onResume end.
+
+
+
+}// fragment end.
