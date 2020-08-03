@@ -14,15 +14,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -30,6 +35,8 @@ import java.util.ArrayList;
 import static android.app.Activity.RESULT_OK;
 
 public class FragmentMessage extends Fragment {
+
+    int clickNum= 0;
 
     ListView listView;
     ArrayList<ItemMessageFragment> listItem = new ArrayList<>();
@@ -58,6 +65,8 @@ public class FragmentMessage extends Fragment {
 
     }
 
+    ArrayList<String> tels= new ArrayList<>();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -65,6 +74,66 @@ public class FragmentMessage extends Fragment {
 
         listView = view.findViewById(R.id.listview_msgfg);
         listView.setAdapter(adapter);
+
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Toast.makeText(getActivity(), ""+position, Toast.LENGTH_SHORT).show();
+
+
+                String t= listItem.get(position).par1phone;
+                tels.add( listItem.get(position).par1phone );
+
+                /////////////////////////////////// how to cancel checked phone???????????!!!!!!!!!?!?!?!!?!?
+
+//                if (  ){
+//                    for(int i = 0; i<tels.size(); i++){
+//                        if (t.equals(tels.get(i))) tels.remove(i);
+//                    }
+//                }
+
+
+
+//                for( String tel : tels){
+//                    if ( tel.equals(t)){
+//                        tels.remove(position);
+//                    }
+//                }
+
+                //1. tels에 정보가없다면 클릭된 아이템을 tels에 입력
+//                for(int i=0; i<tels.size(); i++){
+//                    if (t.equals(tels.get(i))){
+//                        tels.remove(i);
+//                    }else {
+//                        tels.add( listItem.get(position).par1phone );
+//                    }
+//                }
+
+
+                //2. tels에 정보가 있는데 클릭되었다면, tels에서 remove
+//                for(int i=0; i<tels.size(); i++){
+//                    if(t.equals(tels.get(i))){
+//                        tels.remove(i);
+//                    }
+//                }
+
+
+
+                //for( String tel : tels){
+                //    if( tel.equals( t ) ) listItem.remove(t);
+                    //else tels.add( listItem.get(position).par1phone );
+               //     Toast.makeText(getActivity(), ""+listItem.get(position).par1phone, Toast.LENGTH_SHORT).show();
+               // }
+
+//                tels.add(  listItem.get(position).par1phone  );
+//                Toast.makeText(getActivity(), ""+listItem.get(position).par1phone, Toast.LENGTH_SHORT).show(); // 번호 불러오기 확인
+
+
+
+            }
+        });
 
         listItem.clear();
         for(int i = 0; i<G.dtos.size(); i++){
@@ -83,7 +152,15 @@ public class FragmentMessage extends Fragment {
             @Override
             public void onClick(View v) {
 
-                String sendingMsgList = "01022223333";
+                StringBuffer buffer = new StringBuffer();
+
+                for(int i=0; i<tels.size(); i++){
+                    buffer.append(tels.get(i).toString());
+                    buffer.append(", ");
+                }
+
+                String sendingMsgList = buffer.toString();
+
 
                 Uri msgList = Uri.parse("smsto:"+sendingMsgList);
 
